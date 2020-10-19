@@ -1,11 +1,6 @@
-#ifndef EMPLOYEE_H
-#define EMPLOYEE_H
+#include "Employee.h"
 
-class Employee
+Employee::Employee()
 {
-	public:
-		Employee();
-	protected:
-};
-
-#endif
+	
+}
