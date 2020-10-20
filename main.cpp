@@ -1,12 +1,18 @@
 #include <iostream>
 #include <string>
 #include "customer.h"
+#include "Booking.h"
+#include "Room.h"
 
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
 	customer obj; 
+	Booking obj1;
+	Room obj2;
+	obj2.readfile();
+	string num_people;
 	int num;
 	
 	cout << "============== OO SAD Hotel =============" << endl;
@@ -20,10 +26,15 @@ int main(int argc, char** argv) {
 	switch(num){
 
 		case 1:{
-			obj.Booking();
+			
+			cout << "Enter Num People : ";
+				cin >> num_people;
+			obj2.show(num_people);
+			obj1.book();
 			break;
 		}	
 		case 2:{
+			//login
 			break;
 		}
 			
