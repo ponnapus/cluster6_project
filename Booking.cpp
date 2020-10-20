@@ -46,3 +46,19 @@ void Booking::book(){
 				cout<<"Loading............"<<endl;
 			}	
 }
+string Booking::getnumroom(){
+	return num_room;
+}
+string Booking::getname(){
+	return name;
+}
+string Booking::getlastname(){
+	return lname;
+}
+string Booking::gettel(){
+	return tel;
+}
+string Booking::randomcode(){
+
+}
+		

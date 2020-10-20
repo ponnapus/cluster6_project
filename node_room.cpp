@@ -13,6 +13,3 @@ node_room::node_room()
 		next = NULL;
 		
 }
-void node_room::chagestatus(string status){
-	status_room=status;	
-}

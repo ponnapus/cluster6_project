@@ -16,6 +16,11 @@ class Booking
 		
 		Booking();
 		void book();
+		string getnumroom();
+		string getname();
+		string getlastname();
+		string gettel();
+		string randomcode();
 		
 };
 

@@ -14,7 +14,6 @@ class node_room
 		string status_room;
 		node_room *next;
 		node_room();
-		void chagestatus(string status);
 };
 
 #endif

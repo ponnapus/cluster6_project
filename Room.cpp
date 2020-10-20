@@ -67,7 +67,25 @@ void Room::readfile(){
 }
 void Room::write_file(){
 	node_room *temp = head_room;
-		
+	for(int i=1;i<=count_room;i++){
+	ofstream myfile ("room.txt",ios::app);
+				if (myfile.is_open()){	
+						myfile<<i<<","<<temp->num_room<<","<<temp->type_room<<","<<temp->people_room<<","<<temp->price_room<<","<<temp->status_room;
+						myfile<<endl;
+					}	
+			myfile.close();	
+			temp = temp->next;
+	}
+}
+void Room::ChangeStatus(string No_Room){
+	node_room *temp = head_room;
+	for(int i=1;i<=count_room;i++){
+		if(No_Room==temp->num_room){
+			temp->status_room="Booked";
+			break;
+		}
+		temp=temp->next;
+	}
 }
 void Room::show(string num){
 	node_room *temp = head_room;

@@ -22,6 +22,7 @@ class Room
 		void readfile();
 		void show(string num);
 		void write_file();
+		void ChangeStatus(string No_Room);
 	protected:
 		
 };
