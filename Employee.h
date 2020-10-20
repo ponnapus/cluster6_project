@@ -5,6 +5,7 @@ class Employee
 {
 	public:
 		Employee();
+		void login(string username,string password);
 	protected:
 };
 
