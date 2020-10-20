@@ -13,9 +13,9 @@ class Booking
 		int num_booking;
 		string num_room;
 		string tel;
+		
 		Booking();
 		void book();
-	protected:
 		
 };
 

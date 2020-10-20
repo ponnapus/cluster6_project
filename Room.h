@@ -14,12 +14,14 @@ class Room
 		string type;
 		string people;
 		string price;
-		Room();
-		void add(string No_Room,string type,string people,string price);
-		void readfile();
-		void show(string num);
+		string status;
 		int count_room;
 		
+		Room();
+		void add(string No_Room,string type,string people,string price,string status);
+		void readfile();
+		void show(string num);
+		void write_file();
 	protected:
 		
 };

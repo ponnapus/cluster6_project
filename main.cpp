@@ -30,7 +30,6 @@ int main(int argc, char** argv) {
 			cout << "Enter Num People : ";
 				cin >> num_people;
 			obj2.show(num_people);
-			
 			obj1.book();
 			break;
 		}	

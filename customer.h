@@ -11,6 +11,10 @@ class customer
 		customer();
 	
 	protected:
+		string name;
+		string tel;
+		string numroom;
+		
 };
 
 #endif

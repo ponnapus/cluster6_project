@@ -41,7 +41,8 @@ void Booking::book(){
 					cin >> tel;
 				cout << "================================================" << endl;
 				
-			}else{
 				
+			}else if(num_booking == 2){
+				cout<<"Loading............"<<endl;
 			}	
 }

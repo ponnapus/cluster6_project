@@ -12,12 +12,13 @@ Room::Room()
 		count_room = 0;
 }
 
-void Room::add(string No_Room,string type,string people,string price){
+void Room::add(string No_Room,string type,string people,string price,string status){
 	node_room *temp = new node_room();
 			temp->num_room = No_Room;
 			temp->type_room = type;
 			temp->people_room = people;
 			temp->price_room = price;
+			temp->status_room=status;
 			
 			if(head_room == NULL){
 				head_room = temp;
@@ -56,14 +57,18 @@ void Room::readfile(){
 				people = line.substr(0,line.find(d));
 					line.erase(0,line.find(d)+1);
 				price = line.substr(0,line.find(d));
-					//	line.erase(0,line.find(d)+1);
-					add(No_Room,type,people,price);
+					line.erase(0,line.find(d)+1);
+				status = line.substr(0,line.find(d));	
+					add(No_Room,type,people,price,status);
 
 			}
 			  		myfile.close();
 		}
 }
-
+void Room::write_file(){
+	node_room *temp = head_room;
+		
+}
 void Room::show(string num){
 	node_room *temp = head_room;
 		cout << "=============================" << "NUM PEOPLE "<< num <<" PER ONE ROOM" <<"=============================================================" << endl;
@@ -73,24 +78,26 @@ void Room::show(string num){
 		for(int i=0;i<count_room;i++){
 			//cout << temp->people_room<< endl;
 			//cout << "="<<temp->type_room<<  endl;
-			if(num == temp->people_room){
+			if(temp->status_room=="Empty"){
+				if(num == temp->people_room){
 				cout << temp->num_room << "\t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
+				}	
+					temp = temp->next;	
 			}	
-			
-			temp = temp->next;
 		}
-			cout << "===================== OTHER ROOM =======" << endl;	
+			cout << "===================== OTHER ROOM ====================" << endl;	
 			temp = head_room;
 			
 		cout << "ROOMID" << "\t" << "NUM PEOPLE\t"  << "TYPE ROOM" << "\t"<< "PRICE ROOM"<< endl;
 		for(int i=0;i<count_room;i++){
 			//cout << temp->people_room<< endl;
 			//cout << "="<<temp->type_room<<  endl;
-			if(num != temp->people_room){
-				cout << temp->num_room << "\t" << temp->people_room  << "people \t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
-			}	
-			
-			temp = temp->next;
+			if(temp->status_room=="Empty"){
+				if(num != temp->people_room){
+					cout << temp->num_room << "\t" << temp->people_room  << "people \t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
+				}	
+				temp = temp->next;
+			}
 		}
 		cout << "=========================================" << endl;
 		

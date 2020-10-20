@@ -11,8 +11,10 @@ class node_room
 		string price_room;
 		string type_room;
 		string num_room;
+		string status_room;
 		node_room *next;
 		node_room();
+		void chagestatus(string status);
 };
 
 #endif
