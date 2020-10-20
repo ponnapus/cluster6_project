@@ -5,6 +5,7 @@ class Hotel
 {
 	public:
 		Hotel();
+		
 	protected:
 };
 
