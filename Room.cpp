@@ -9,6 +9,7 @@ Room::Room()
 {
 		head_room =NULL;
 		tail_room =NULL;
+		count_room = 0;
 }
 
 void Room::add(string No_Room,string type,string people,string price){
@@ -48,8 +49,8 @@ void Room::readfile(){
 
 				num = line.substr(0,line.find(d));
 					line.erase(0,line.find(d)+1);
-				No_Room = line.substr(0,line.find(" "));
-					line.erase(0,line.find(" ")+1);
+				No_Room = line.substr(0,line.find(d));
+					line.erase(0,line.find(d)+1);
 				type = line.substr(0,line.find(d));
 					line.erase(0,line.find(d)+1);
 				people = line.substr(0,line.find(d));
@@ -65,12 +66,32 @@ void Room::readfile(){
 
 void Room::show(string num){
 	node_room *temp = head_room;
-		
+		cout << "=============================" << "NUM PEOPLE "<< num <<" PER ONE ROOM" <<"=============================================================" << endl;
+		cout << "ROOMID" << "\t" << "\tTYPE ROOM" << "\t"<< "PRICE ROOM"<< endl;
+		cout << "=============================================================================================================================" << endl;
+
 		for(int i=0;i<count_room;i++){
+			//cout << temp->people_room<< endl;
+			//cout << "="<<temp->type_room<<  endl;
 			if(num == temp->people_room){
-			cout << temp->num_room << "\t" << temp->people_room << temp->price_room << "\t"<<temp->type_room << endl;
-			temp = temp->next;
+				cout << temp->num_room << "\t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
 			}	
+			
+			temp = temp->next;
 		}
-	
+			cout << "===================== OTHER ROOM =======" << endl;	
+			temp = head_room;
+			
+		cout << "ROOMID" << "\t" << "NUM PEOPLE\t"  << "TYPE ROOM" << "\t"<< "PRICE ROOM"<< endl;
+		for(int i=0;i<count_room;i++){
+			//cout << temp->people_room<< endl;
+			//cout << "="<<temp->type_room<<  endl;
+			if(num != temp->people_room){
+				cout << temp->num_room << "\t" << temp->people_room  << "people \t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
+			}	
+			
+			temp = temp->next;
+		}
+		cout << "=========================================" << endl;
+		
 }
