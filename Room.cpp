@@ -57,8 +57,8 @@ void Room::readfile(){
 				people = line.substr(0,line.find(d));
 					line.erase(0,line.find(d)+1);
 				price = line.substr(0,line.find(d));
-					line.erase(0,line.find(d)+1);
-				status = line.substr(0,line.find(d));	
+				line.erase(0,line.find(d)+1);	
+				status =line;
 					add(No_Room,type,people,price,status);
 
 			}
@@ -67,23 +67,30 @@ void Room::readfile(){
 }
 void Room::write_file(){
 	node_room *temp = head_room;
-	for(int i=1;i<=count_room;i++){
-	ofstream myfile ("room.txt",ios::app);
-				if (myfile.is_open()){	
+	ofstream myfile ("room.txt",ios::out);
+		if (myfile.is_open()){
+			for(int i=1;i<=count_room;i++){
 						myfile<<i<<","<<temp->num_room<<","<<temp->type_room<<","<<temp->people_room<<","<<temp->price_room<<","<<temp->status_room;
 						myfile<<endl;
-					}	
+				temp = temp->next;		
+			}
+			
+		}
 			myfile.close();	
-			temp = temp->next;
-	}
+			
 }
 void Room::ChangeStatus(string No_Room){
 	node_room *temp = head_room;
 	for(int i=1;i<=count_room;i++){
 		if(No_Room==temp->num_room){
+				//	cout << "-"<<temp->status_room;
+
 			temp->status_room="Booked";
+					//cout << "/"<<temp->status_room;
+
 			break;
 		}
+	//	cout << "o"<<temp->status_room;
 		temp=temp->next;
 	}
 }
@@ -99,9 +106,11 @@ void Room::show(string num){
 			if(temp->status_room=="Empty"){
 				if(num == temp->people_room){
 				cout << temp->num_room << "\t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
+			//	cout << temp->status_room;
 				}	
-					temp = temp->next;	
+				
 			}	
+				temp = temp->next;	
 		}
 			cout << "===================== OTHER ROOM ====================" << endl;	
 			temp = head_room;
@@ -113,9 +122,11 @@ void Room::show(string num){
 			if(temp->status_room=="Empty"){
 				if(num != temp->people_room){
 					cout << temp->num_room << "\t" << temp->people_room  << "people \t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
+				
 				}	
-				temp = temp->next;
+				
 			}
+			temp = temp->next;
 		}
 		cout << "=========================================" << endl;
 		

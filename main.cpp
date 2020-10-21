@@ -32,7 +32,11 @@ int main(int argc, char** argv) {
 			obj2.show(num_people);
 			obj1.book();
 			obj2.ChangeStatus(obj1.num_room);
+		//	obj2.show(num_people);
 			obj2.write_file();
+			obj1.randomcode();
+			cout << "hh";
+		//	obj.write_file();
 			break;
 		}	
 		case 2:{

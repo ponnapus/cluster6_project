@@ -1,6 +1,8 @@
 #include "Booking.h"
 #include <iostream>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 Booking::Booking()
@@ -46,19 +48,39 @@ void Booking::book(){
 				cout<<"Loading............"<<endl;
 			}	
 }
+/*
 string Booking::getnumroom(){
 	return num_room;
 }
 string Booking::getname(){
-	return name;
-}
-string Booking::getlastname(){
-	return lname;
+	return name+" "+lname;
 }
 string Booking::gettel(){
 	return tel;
 }
-string Booking::randomcode(){
+*/
 
+/*void Booking::add(){
+	string n;
+	//n = name+" "+lname;
+	obj.addcutomer(name,tel,num_room,codebook);
+}*/
+
+string Booking::randomcode(){
+	int num[6];
+	srand (time(NULL));
+	for(int i = 0; i < 6 ; i++){
+	num[i] = rand() % 52;
+	}
+	string code="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	
+	for(int i=0;i<6;i++){
+		codebook=codebook+code[num[i]];
+	}
+	cout<<"Code: "<<codebook;	
+	obj.write_file(name,lname,tel,num_room,codebook);
+
+//return codebook;	
 }
+
 		
