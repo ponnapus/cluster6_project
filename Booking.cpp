@@ -66,7 +66,7 @@ string Booking::gettel(){
 	obj.addcutomer(name,tel,num_room,codebook);
 }*/
 
-string Booking::randomcode(){
+void Booking::randomcode(){
 	int num[6];
 	srand (time(NULL));
 	for(int i = 0; i < 6 ; i++){

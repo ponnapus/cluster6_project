@@ -17,13 +17,14 @@ class Booking
 		string codebook;
 		string tel;
 		
+		//obj.write_file(name,lname,tel,num_room,codebook);
 		
 		Booking();
 		void book();
 		//string getnumroom();
 		//string getname();
 		//string gettel();
-		string randomcode();
+		void randomcode();
 		void add();
 		
 };

@@ -8,11 +8,11 @@ customer::customer()
 {
 	
 }
-void customer::addcutomer(string name,string tel,string numroom,string codebooked){
+void customer::addcutomer(string n,string t,string numr,string codebooked){
 	nodeCustomer *temp = new nodeCustomer();
-			temp->name = name;
-			temp->tel = tel;
-			temp->numroom = numroom;
+			temp->name = n;
+			temp->tel = t;
+			temp->numroom = numr;
 			temp->codebooked = codebooked;
 			
 			if(head_customer == NULL){
@@ -56,18 +56,18 @@ void customer::readfile(){
 		}
 }
 
-void customer::write_file(string name,string lname,string tel,string numroom,string codebooked){
-	nodeCustomer *temp = new nodeCustomer();
+void customer::write_file(string n,string l,string t,string numr,string codebooked){
+//	nodeCustomer *temp = new nodeCustomer();
 	
-	ofstream myfile ("customer.txt",ios::out);
+	ofstream myfile ("customer.txt",ios::app);
 	if (myfile.is_open()){
 	
-				for(int i=1;i<=countCustomer;i++){	
-						myfile<<i<<","<<name<< " " << lname<<","<<tel<<","<<numroom<<","<<codebooked;
+			//	for(int i=1;i<=countCustomer;i++){	
+						myfile<</*i<<","<<*/ n  << " " << l<<","<<t<<","<<numr<<","<<codebooked;
 						myfile<<endl;
 					
-					temp = temp->next;
-				}	
+				//	temp = temp->next;
+			//	}	
 			
 	}
 	myfile.close();	

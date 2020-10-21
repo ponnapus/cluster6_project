@@ -69,12 +69,15 @@ void Room::write_file(){
 	node_room *temp = head_room;
 	ofstream myfile ("room.txt",ios::out);
 		if (myfile.is_open()){
+			temp = head_room;
 			for(int i=1;i<=count_room;i++){
 						myfile<<i<<","<<temp->num_room<<","<<temp->type_room<<","<<temp->people_room<<","<<temp->price_room<<","<<temp->status_room;
 						myfile<<endl;
 				temp = temp->next;		
 			}
 			
+		}else{
+			cout << "sss"<< endl;
 		}
 			myfile.close();	
 			
