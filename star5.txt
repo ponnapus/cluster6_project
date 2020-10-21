@@ -1,0 +1,9 @@
+                      												
+       ,O,            		,O,		       	   ,O,			       ,O,			   ,O,
+      ,OOO,           	       ,OOO,		          ,OOO,			      ,OOO,		          ,OOO,
+'oooooOOOOOooooo'     	 'oooooOOOOOooooo'	    'oooooOOOOOooooo'	        'oooooOOOOOooooo'	    'oooooOOOOOooooo'
+  `OOOOOOOOOOO`       	   `OOOOOOOOOOO`	      `OOOOOOOOOOO`		  `OOOOOOOOOOO`		      `OOOOOOOOOOO`
+    `OOOOOOO`         	     `OOOOOOO`		        `OOOOOOO`		    `OOOOOOO`			`OOOOOOO`
+    OOOO'OOOO         	     OOOO'OOOO		        OOOO'OOOO		    OOOO'OOOO			OOOO'OOOO
+   OOO'   'OOO              OOO'   'OOO		       OOO'   'OOO		   OOO'   'OOO		       OOO'   'OOO
+  O'         'O            O'         'O	      O'         'O		  O'         'O		      O'         'O

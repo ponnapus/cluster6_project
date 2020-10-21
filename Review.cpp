@@ -138,9 +138,27 @@ void Review::reviewhotel(){
 		cout<<"Total number of people reviewing : ";
 		cout<<count<<endl;
 		total=total/count;//calculate*
+		//total=total/2;
 		cout<<endl;
 		cout<<"Total rating of hotel : ";
+		cout<<setprecision(3);
 		cout<<total<<endl;
+		cout<<endl;
+		if(total>=9.0){
+			icon("star5");
+		}
+		else if(total>=7.0){
+			icon("star4");
+		}
+		else if(total>=5.0){
+			icon("star3");
+		}
+		else if(total>=3.0){
+			icon("star2");
+		}
+		else if(total>=1.0){
+			icon("star1");
+		}
 		cout<<"=========================="<<endl;
 		do{
 				cout<<"!Enter Y/N only!"<<endl;
