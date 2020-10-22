@@ -10,6 +10,8 @@ class nodeCustomer
 		string tel;
 		string numroom;
 		string codebooked;
+		string dayin;
+		string dayout;
 		nodeCustomer *next;
 		nodeCustomer();
 	protected:

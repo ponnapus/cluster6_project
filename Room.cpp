@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 Room::Room()
@@ -77,7 +78,7 @@ void Room::write_file(){
 			}
 			
 		}else{
-			cout << "sss"<< endl;
+			cout << "!!! Not open !!!"<< endl;
 		}
 			myfile.close();	
 			
@@ -98,10 +99,13 @@ void Room::ChangeStatus(string No_Room){
 	}
 }
 void Room::show(string num){
+	string check="0";
 	node_room *temp = head_room;
-		cout << "=============================" << "NUM PEOPLE "<< num <<" PER ONE ROOM" <<"=============================================================" << endl;
+		cout << "============================= Matching Room =====================================" << endl;
+		cout << "Number People : " <<num<<endl;
+		cout << "=================================================================================" << endl;
 		cout << "ROOMID" << "\t" << "\tTYPE ROOM" << "\t"<< "PRICE ROOM"<< endl;
-		cout << "=============================================================================================================================" << endl;
+		cout << "=================================================================================" << endl;
 
 		for(int i=0;i<count_room;i++){
 			//cout << temp->people_room<< endl;
@@ -110,10 +114,14 @@ void Room::show(string num){
 				if(num == temp->people_room){
 				cout << temp->num_room << "\t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
 			//	cout << temp->status_room;
+					check="1";
 				}	
 				
 			}	
 				temp = temp->next;	
+		}
+		if(check=="0"){
+			cout<<"!!!! Don't have room !!!!!"<<endl;
 		}
 			cout << "===================== OTHER ROOM ====================" << endl;	
 			temp = head_room;

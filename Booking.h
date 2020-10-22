@@ -21,6 +21,7 @@ class Booking
 		
 		Booking();
 		void book();
+		bool checkAnswer(string room);
 		//string getnumroom();
 		//string getname();
 		//string gettel();
