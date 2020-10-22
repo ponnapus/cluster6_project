@@ -144,7 +144,7 @@ void Review::reviewhotel(){
 		cout<<setprecision(3);
 		cout<<total<<endl;
 		cout<<endl;
-		if(total>=9.0){
+		if(total>=9.0){//calculate star
 			icon("star5");
 		}
 		else if(total>=7.0){
@@ -165,7 +165,7 @@ void Review::reviewhotel(){
 				cout<<"Go back to the start menu? (Y/N) : ";
 					cin>>ch;
 				
-			}while((ch != "Y")&&(ch != "N")&&(ch != "y")&&(ch != "n"));
+			}while((ch != "Y")&&(ch != "N")&&(ch != "y")&&(ch != "n")); //Loop do-while check Answer
 			sleep(1);
 			system("cls");
 			if(ch=="Y"||ch=="y"){
