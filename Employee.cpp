@@ -1,11 +1,40 @@
-#ifndef EMPLOYEE_H
-#define EMPLOYEE_H
+#include "Employee.h"
+#include<iostream>
+#include<string>
+#include<fstream>
+#include<iomanip>
+#include<Windows.h>
 
-class Employee
-{
-	public:
-		Employee();
-	protected:
-};
+Employee::Employee(){
+			
+			}
+			 Employee::Login(){
+			    username = " ";
+				password = " ";
+				}
+			int Employee::inputLogin(string username,string password){
+				string filein,logUser,logPass;
+				int num=0;
+				ifstream myFile; 
+				myFile.open("DataStaff.txt",ios::in);
+				if(myFile.fail()){
+					return 0;
+				}
+				else{
+				while(getline(myFile,filein)){
+					logUser=filein.substr(0,filein.find(','));
+    				   		filein.erase(0,filein.find(',')+1);
+    				logPass=filein.substr(0,filein.find(','));
+    						filein.erase(0,filein.find(',')+1);
+					if(username == logUser && password == logPass){
+						return 1;
+					}else{
+						return 2;
+						}//if success																									
+					}//while				
+				}//if myfile open
+			myFile.close();
+			}//bool inputLogin
 
-#endif
+
+

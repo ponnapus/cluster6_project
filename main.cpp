@@ -4,6 +4,10 @@
 #include "customer.h"
 #include "Booking.h"
 #include "Room.h"
+#include "Employee.h"
+#include<fstream>
+#include<iomanip>
+#include<Windows.h>
 
 
 using namespace std;
@@ -13,8 +17,32 @@ int main(int argc, char** argv) {
 	customer obj; 
 	Booking obj1;
 	Room obj2;
+	Employee login;
 	obj2.readfile();
 	string num_people,choose;
+	int result=0;
+	string username;
+	string password;
+	do{
+		cout<<"*******************************"<<endl;
+		cout<<"************ LOGIN ************"<<endl;
+		cout<<"  Enter username : ";
+		cin>>username;
+		cout<<"  Enter password : ";
+		cin>>password;
+		cout<<"*******************************"<<endl;
+		cout<<"*******************************"<<endl;
+		system("cls");
+		result = login.inputLogin(username,password);
+		if(result==2){
+			cout << "           -FAIL-           " << endl;
+			Sleep(2000);
+			system("cls");
+		}
+	}while(result != 1);
+//	cout << "           -SUCCESS-           " << endl;
+//	Sleep(5000);
+//	system("cls");
 	int num;
 	do{
 		cout << "============== OO SAD Hotel =============" << endl;
