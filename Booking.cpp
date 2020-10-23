@@ -122,7 +122,7 @@ void Booking::randomcode(){
 		codebook=codebook+code[num[i]];
 	}
 	cout<<"Code: "<<codebook;	
-	obj.write_file(name,lname,tel,num_room,codebook,day_in,day_out);
+	obj.write_file(name,lname,tel,num_room,codebook,day_in,day_out,"-","-");
 
 //return codebook;	
 }

@@ -5,6 +5,7 @@
 #include "Booking.h"
 #include "Room.h"
 #include "Employee.h"
+#include "Checkout.h"
 #include<fstream>
 #include<iomanip>
 #include<Windows.h>
@@ -23,7 +24,11 @@ int main(int argc, char** argv) {
 	int result=0;
 	string username;
 	string password;
-	do{
+	obj.readfilec();
+	Checkout oo;
+	cout << obj.head_customer->name;
+	
+/*	do{
 		cout<<"*******************************"<<endl;
 		cout<<"************ LOGIN ************"<<endl;
 		cout<<"  Enter username : ";
@@ -39,7 +44,7 @@ int main(int argc, char** argv) {
 			Sleep(2000);
 			system("cls");
 		}
-	}while(result != 1);
+	}while(result != 1);*/
 //	cout << "           -SUCCESS-           " << endl;
 //	Sleep(5000);
 //	system("cls");

@@ -18,11 +18,13 @@ class customer
 		string codebooked;
 		string dayin;
 		string dayout;
+		string c_out;
+		string c_in;
 		int countCustomer;
 		customer();
-		void write_file(string n,string l,string t,string numr,string codebooked,string dayin,string dayout);
-		void readfile();
-		void addcutomer(string name,string tel,string numroom,string codebooked,string dayin,string dayout);
+		void write_file(string n,string l,string t,string numr,string codebooked,string dayin,string dayout,string checkin,string checkout);
+		void readfilec();
+		void addcustomer(string name,string tel,string numroom,string codebooked,string dayin,string dayout,string c_in,string c_out);
 	
 	protected:
 		
