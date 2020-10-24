@@ -34,7 +34,7 @@ using namespace std;
 		void addCustomer(string name,string tel,string dayIn,string dayOut,int amount);
 };//class customer*/
 
-class CheckIn2{
+class CheckIn{
 	protected:
 		Room r;
 		string name;
@@ -44,7 +44,7 @@ class CheckIn2{
 		int amount;
 		string numRoom;
 	public:
-		CheckIn2();
+		CheckIn();
 		string getRoom();
 		void setRoom(string room);
 		void getCustomerData();

@@ -4,7 +4,7 @@
 #include<iomanip>
 #include<Windows.h>
 #include<sstream>
-#include "CheckIn2.h"
+#include "CheckIn.h"
 #include "customer.h"
 using namespace std;
 /*class nodeCustomer{
@@ -49,31 +49,31 @@ class Customer{
 	 	}
 	}//add data customer
 };*/
-		CheckIn2::CheckIn2()
+		CheckIn::CheckIn()
 		{
 			numRoom = "";
 		}
-		string CheckIn2::getRoom(){
+		string CheckIn::getRoom(){
 			return numRoom;
 		}//get room
-		void CheckIn2::setRoom(string room){
+		void CheckIn::setRoom(string room){
 			numRoom = room;
 		}//set room
-		void CheckIn2::getCustomerData(){
+		void CheckIn::getCustomerData(){
 			name = " ";
 			tel = " ";
 			dayIn = " ";
 			dayOut = " ";
 			amount = 0;
 		}//get customer data
-		void CheckIn2::setCustomerData(string n,string t,string in,string out,int a){
+		void CheckIn::setCustomerData(string n,string t,string in,string out,int a){
 			name = n;
 			tel = t;
 			dayIn = in;
 			dayOut = out;
 			amount = a;
 		}//set customer data
-		void CheckIn2::MenuCheckIn(){
+		void CheckIn::MenuCheckIn(){
 			cout << "========== CHECK IN ==========" << endl;
 			cout << endl;
 			cout << "  1. Booked " << endl;
@@ -81,7 +81,7 @@ class Customer{
 			cout << endl;
 			cout << "==============================" << endl;
 		}//Menu check in
-		void CheckIn2::BookedCode(){
+		void CheckIn::BookedCode(){
 			cout << "========== CHECK IN ==========" << endl;
 			cout << endl;
 			cout << " Book code : " << endl;//booking code
@@ -89,7 +89,7 @@ class Customer{
 			cout << endl;
 			cout << "==============================" << endl;
 		}//show booked code
-		void CheckIn2::BookedInformation(){
+		void CheckIn::BookedInformation(){
 			cout << "======BOOKING INFORMATION======" << endl;
 			cout << " Name : " << name << endl; //Name customer
 			cout << " Tel : " << tel << endl; //Tel customer
@@ -98,7 +98,7 @@ class Customer{
 			cout << " Amount : " << amount << endl; //Number people
 			cout << " Room number : " << numRoom << endl;
 		}//Booked information
-		void CheckIn2::CheckInComplete(){
+		void CheckIn::CheckInComplete(){
 			cout << "========== CHECK IN ==========" << endl;
 			cout << "          COMPLETE!!          " << endl;
 			cout << " Name : " << name << endl; //Name customer
@@ -110,7 +110,7 @@ class Customer{
 			cout << "===============================" << endl;
 			cout << "  WELCOME TO CLUSTER 6 HOTEL  " << endl;
 		}//check in complete
-		void CheckIn2::WalkInCheckIn(){
+		void CheckIn::WalkInCheckIn(){
 			cout << "===============CHECK IN===============" << endl;
 			cout << " Please input your information" << endl;
 			cout << " Name : " ; //Name customer
@@ -125,7 +125,7 @@ class Customer{
 			cin >> amount;
 			cout << "=======================================" << endl;
 		}//walk in check in
-		void CheckIn2::ShowEmptyRoom(){
+		void CheckIn::ShowEmptyRoom(){
 			cout << "========== CHECK IN ==========" << endl;
 			cout << " Empty room" << endl;
 			cout << endl;// 1st Floor 102 105 106 109
@@ -134,7 +134,7 @@ class Customer{
 			cin >> numRoom;//Choose room;
 			cout << "===============================" << endl;
 		}//show empty room
-		void CheckIn2::ChooseRoom(){
+		void CheckIn::ChooseRoom(){
 			cout << " Room number : " ; //Room number
 			cin >> numRoom;
 		}//choos room
