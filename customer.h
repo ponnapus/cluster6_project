@@ -10,6 +10,7 @@ class customer
 	public:
 		nodeCustomer *head_customer;
 		nodeCustomer *tail_customer;
+		nodeCustomer *temp;
 		
 	//	Booking obj;
 		string name;
@@ -18,11 +19,14 @@ class customer
 		string codebooked;
 		string dayin;
 		string dayout;
+		string check_in;
+		string check_out;
 		int countCustomer;
 		customer();
-		void write_file(string n,string l,string t,string numr,string codebooked,string dayin,string dayout);
+		void write_file();
 		void readfile();
-		void addcutomer(string name,string tel,string numroom,string codebooked,string dayin,string dayout);
+		void show();
+		void addcutomer(string name,string tel,string numroom,string codebooked,string dayin,string dayout,string checkout,string checkin);
 	
 	protected:
 		

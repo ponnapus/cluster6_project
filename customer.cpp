@@ -1,4 +1,5 @@
 #include "customer.h"
+#include "nodeCustomer.h"
 #include <iostream>
 #include <fstream>
 #include "nodeCustomer.h"
@@ -6,9 +7,20 @@
 using namespace std;
 customer::customer()
 {
-	
+		head_customer=NULL;
+		tail_customer=NULL;
+		temp=NULL;
+		name="";
+		tel="";
+		numroom="";
+		codebooked="";
+		dayin="";
+		dayout="";
+		check_in="";
+		check_out="";
+		countCustomer=0;	
 }
-void customer::addcutomer(string n,string t,string numr,string codebooked,string dayin,string dayout){
+void customer::addcutomer(string n,string t,string numr,string codebooked,string dayin,string dayout,string checkout,string checkin){
 	nodeCustomer *temp = new nodeCustomer();
 			temp->name = n;
 			temp->tel = t;
@@ -16,6 +28,8 @@ void customer::addcutomer(string n,string t,string numr,string codebooked,string
 			temp->codebooked = codebooked;
 			temp->dayin = dayin;
 			temp->dayout = dayout;
+			temp->checkin = checkin;
+			temp->checkout = checkout;
 			
 			if(head_customer == NULL){
 				head_customer = temp;
@@ -54,26 +68,40 @@ void customer::readfile(){
 					line.erase(0,line.find(d)+1);
 				dayin = line.substr(0,line.find(d));
 					line.erase(0,line.find(d)+1);
-				dayout = line.substr(0,line.find(" "));
-				addcutomer(name,tel,numroom,codebooked,dayin,dayout);
+				dayout = line.substr(0,line.find(d));
+					line.erase(0,line.find(d)+1);
+				check_in = line.substr(0,line.find(d));
+					line.erase(0,line.find(d)+1);
+				check_out = line;	
+				
+				addcutomer(name,tel,numroom,codebooked,dayin,dayout,check_in,check_out);
 			}
 			  		myfile.close();
 		}
 }
 
-void customer::write_file(string n,string l,string t,string numr,string codebooked,string dayin,string dayout){
-//	nodeCustomer *temp = new nodeCustomer();
-	
-	ofstream myfile ("customer.txt",ios::app);
-	if (myfile.is_open()){
-	
-			//	for(int i=1;i<=countCustomer;i++){	
-						myfile<</*i<<","<<*/ n  << " " << l<<","<<t<<","<<numr<<","<<codebooked<<","<<dayin<<","<<dayout;
+void customer::write_file(){
+	temp = head_customer;
+	ofstream myfile ("customer.txt",ios::out);
+		if (myfile.is_open()){
+			for(int i=1;i<=countCustomer;i++){
+						myfile<<temp->name<<","<<temp->tel<<","<<temp->numroom<<","<<temp->codebooked<<","<<temp->dayin<<","<<temp->dayout
+						<<","<<temp->checkin<<","<<temp->checkout;
 						myfile<<endl;
-					
-				//	temp = temp->next;
-			//	}	
+				temp = temp->next;		
+			}
 			
-	}
-	myfile.close();	
+		}else{
+			cout << "!!! Not open !!!"<< endl;
+		}
+			myfile.close();	
+			
+}
+void customer::show(){
+		temp = head_customer;
+		for(int i=1;i<=countCustomer;i++){
+			cout<<temp->name<<endl;
+			temp=temp->next;
+		}
+
 }

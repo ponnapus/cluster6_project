@@ -121,8 +121,11 @@ void Booking::randomcode(){
 	for(int i=0;i<6;i++){
 		codebook=codebook+code[num[i]];
 	}
-	cout<<"Code: "<<codebook;	
-	obj.write_file(name,lname,tel,num_room,codebook,day_in,day_out);
+	cout<<"Code: "<<codebook;
+	obj.readfile();	
+	obj.addcutomer(name+lname,tel,num_room,codebook,day_in,day_out,"-","-");
+	obj.write_file();
+	
 
 //return codebook;	
 }

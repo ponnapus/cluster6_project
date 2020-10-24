@@ -3,7 +3,7 @@
 3,A301,normal,3,1500,Empty
 4,A102,sweet,2,2000,Booked
 5,A202,sweet,2,2000,Booked
-6,B102,sweet,2,2000,Empty
+6,B102,sweet,2,2000,Booked
 7,B101,normal,1,500,Empty
 8,B201,normal,4,1800,Empty
 9,B301,normal,4,1800,Empty

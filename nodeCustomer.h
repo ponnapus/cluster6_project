@@ -12,6 +12,8 @@ class nodeCustomer
 		string codebooked;
 		string dayin;
 		string dayout;
+		string checkout;
+		string checkin;
 		nodeCustomer *next;
 		nodeCustomer();
 	protected:

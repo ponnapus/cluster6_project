@@ -2,14 +2,13 @@
 #include <sstream>
 #include <string>
 #include "customer.h"
+#include "nodeCustomer.h"
 #include "Booking.h"
 #include "Room.h"
 #include "Employee.h"
 #include<fstream>
 #include<iomanip>
 #include<Windows.h>
-
-
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -23,23 +22,11 @@ int main(int argc, char** argv) {
 	int result=0;
 	string username;
 	string password;
-	do{
-		cout<<"*******************************"<<endl;
-		cout<<"************ LOGIN ************"<<endl;
-		cout<<"  Enter username : ";
-		cin>>username;
-		cout<<"  Enter password : ";
-		cin>>password;
-		cout<<"*******************************"<<endl;
-		cout<<"*******************************"<<endl;
-		system("cls");
-		result = login.inputLogin(username,password);
-		if(result==2){
-			cout << "           -FAIL-           " << endl;
-			Sleep(2000);
-			system("cls");
-		}
-	}while(result != 1);
+	obj.readfile();
+	obj.show();
+	
+
+	
 //	cout << "           -SUCCESS-           " << endl;
 //	Sleep(5000);
 //	system("cls");
@@ -74,7 +61,23 @@ int main(int argc, char** argv) {
 			break;
 		}	
 		case 2:{
-			//login
+			do{
+		cout<<"*******************************"<<endl;
+		cout<<"************ LOGIN ************"<<endl;
+		cout<<"  Enter username : ";
+		cin>>username;
+		cout<<"  Enter password : ";
+		cin>>password;
+		cout<<"*******************************"<<endl;
+		cout<<"*******************************"<<endl;
+		system("cls");
+		result = login.inputLogin(username,password);
+		if(result==2){
+			cout << "           -FAIL-           " << endl;
+			Sleep(2000);
+			system("cls");
+		}
+	}while(result != 1);
 			break;
 		}
 			
