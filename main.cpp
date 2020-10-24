@@ -9,6 +9,8 @@
 #include<iomanip>
 #include<Windows.h>
 #include "CheckIn.h"
+#include <unistd.h>
+
 
 
 using namespace std;
@@ -27,25 +29,10 @@ int main(int argc, char** argv) {
 	obj2.readfile();
 	string num_people,choice;
 	int result=0;
+	string c;//input chioce  in customer
 	string username;
 	string password;
-	do{
-		cout<<"*******************************"<<endl;
-		cout<<"************ LOGIN ************"<<endl;
-		cout<<"  Enter username : ";
-		cin>>username;
-		cout<<"  Enter password : ";
-		cin>>password;
-		cout<<"*******************************"<<endl;
-		cout<<"*******************************"<<endl;
-		system("cls");
-		result = login.inputLogin(username,password);
-		if(result==2){
-			cout << "           -FAIL-           " << endl;
-			Sleep(2000);
-			system("cls");
-		}
-	}while(result != 1);
+
 //	cout << "           -SUCCESS-           " << endl;
 //	Sleep(5000);
 //	system("cls");
@@ -72,28 +59,72 @@ int main(int argc, char** argv) {
 	switch(num){
 
 		case 1:{
-			
-			cout << "Enter Num People : ";
-				cin >> num_people;
-			obj2.show(num_people);
-			obj1.book();
-			obj2.ChangeStatus(obj1.num_room);
-		//	obj2.show(num_people);
-			obj2.write_file();
-			obj1.randomcode();
-			//cout << "hh";
-		//	obj.write_file();
-			break;
+			mm:	
+				system("cls");
+				cout << "====================== WELCOME TO OO SAD HOTEL =====================" << endl;
+				cout << "1.Check Room Empty" << endl;
+				cout << "2.Review Hotel" << endl;
+				cout << "3.Return Menu Home" << endl;
+				cout <<  "====================================================================" << endl;
+				do{
+				cout << "Enter : " ;
+					cin >> c;
+				}while(c != "1" && c != "2" && c!="3");
+				if(c == "1"){
+					do{	
+						cout << "Please Enter Num People (1,2,3,4,5,6,7,10): ";
+							cin >> num_people;
+					}while(num_people != "1" && num_people != "2" && num_people != "3" 
+						&& num_people != "4" &&num_people != "5" && num_people != "6"&&num_people != "7" && num_people != "10");
+					obj2.show(num_people);
+					obj1.book();
+					obj2.ChangeStatus(obj1.num_room);
+					//	obj2.show(num_people);
+					obj2.write_file();
+					cout << "++++++++++++++ Thank You For Booking ++++++++++++" << endl;
+					cout << "   ==== Please Remember Code For Check-In ====" << endl;
+					obj1.randomcode();
+						sleep(3);
+					goto mm;
+					break;
+				}else if(c == "2"){
+					
+					//review
+					goto mm;
+					break;
+				}else{
+					goto menumain;
+					break;
+				}
 		}	
 		case 2:{
-			menuemployee:
+			
+			do{
+				cout<<"*******************************"<<endl;
+				cout<<"************ LOGIN ************"<<endl;
+				cout<<"  Enter username : ";
+				cin>>username;
+				cout<<"  Enter password : ";
+				cin>>password;
+				
+				cout<<"*******************************"<<endl;
+				cout<<"*******************************"<<endl;
+				system("cls");
+				result = login.inputLogin(username,password);
+			if(result==2){
+				cout << "           -FAIL-           " << endl;
+				Sleep(2000);
+				system("cls");
+				}
+			}while(result != 1);
+	menuemployee:
 			cout << "============== Employee ==============" << endl
 				 << "1.Check-in" << endl
 				 << "2.Check-out" << endl
 				 << "3.Exit" << endl
 				 << "======================================" << endl
-				 << "Input your choice : " << endl;
-			cin >> choice;
+				 << "Input your choice : " ;
+					cin >> choice;
 			if(choice == "1")
 			{
 				menucheckin:
@@ -104,29 +135,27 @@ int main(int argc, char** argv) {
 					//s.BookedInformation();
 					cout << "NEXT or BACK(n/b) : " ;
 					cin >> choose;
+					
 					if(choose == "n"){
-						s.CheckInComplete();
+						cout << "check-in complete" << endl;
+					//	s.CheckInComplete();
 					}else if(choose == "b"){
 						goto menucheckin;
 					}//if check in complete
-				}else if(MenuCheckIn == 2){   //Walk in
-				//do{
+					
+				}else //check in book 
+				
+				if(MenuCheckIn == 2){   //Walk in
+				
 					s.getCustomerData();
 					s.WalkInCheckIn();
-					/*ss<<in;
-					ss>>dayin;
-					ss.clear();
-					ss<<out;
-					ss>>dayout;
-					ss.clear();*/
-					//}while(dayin>30 && dayout>30);
-				//s.ShowEmptyRoom();
-				//s.getRoom();
-				//s.setRoom(room);
-				//obj2.ChangeStatus(room);
-				s.CheckInComplete();
-				}//if Menu check in
+					s.CheckInComplete();
+				//	obj.write_file();
+				}//check in walkin 
 			//login
+				sleep(3);
+				system("cls");
+				goto menuemployee;
 				break;
 			}
 			else if(choice == "2")

@@ -23,6 +23,7 @@ class Room
 		void show(string num);
 		void write_file();
 		void ChangeStatus(string No_Room);
+		void ChangeSta(string No_Room);
 	protected:
 		
 };

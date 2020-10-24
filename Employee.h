@@ -14,7 +14,7 @@ class Employee
 		string password;
 	public:
 		Employee();
-		Login();
+		void Login();
 		int inputLogin(string username,string password);
 };
 

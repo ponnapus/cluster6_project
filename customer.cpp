@@ -12,7 +12,7 @@ customer::customer()
 		temp=NULL;
 		name="";
 		tel="";
-		numroom="";
+		numroom = "";
 		codebooked="";
 		dayin="";
 		dayout="";
@@ -81,9 +81,10 @@ void customer::readfile(){
 }
 
 void customer::write_file(){
-	temp = head_customer;
+	nodeCustomer *temp = new nodeCustomer();
 	ofstream myfile ("customer.txt",ios::out);
 		if (myfile.is_open()){
+			temp = head_customer;
 			for(int i=1;i<=countCustomer;i++){
 						myfile<<temp->name<<","<<temp->tel<<","<<temp->numroom<<","<<temp->codebooked<<","<<temp->dayin<<","<<temp->dayout
 						<<","<<temp->checkin<<","<<temp->checkout;
@@ -95,8 +96,9 @@ void customer::write_file(){
 			cout << "!!! Not open !!!"<< endl;
 		}
 			myfile.close();	
-			
 }
+
+
 void customer::show(){
 		temp = head_customer;
 		for(int i=1;i<=countCustomer;i++){

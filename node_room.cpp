@@ -10,6 +10,6 @@ node_room::node_room()
 		type_room= "";
 		num_room = "";
 		status_room="";
-		next = NULL;
+		link = NULL;
 		
 }

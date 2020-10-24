@@ -13,26 +13,6 @@
 #include<sstream>
 
 using namespace std;
-/*class nodeCustomer{
-	public:
-		string Customername;
-		string Customertel;
-		string CustomerdayIn;
-		string CustomerdayOut;
-		string Customeramount;
-		nodeCustomer *linkCustomer;
-
-};//class node customer*/
-/*class Customer{
-   public:
-       nodeCustomer *headCustomer;
-	   nodeCustomer *tailCustomer;
-	   nodeCustomer *tempCustomer;	
-	
-	
-		Customer();
-		void addCustomer(string name,string tel,string dayIn,string dayOut,int amount);
-};//class customer*/
 
 class CheckIn{
 	protected:
@@ -44,7 +24,7 @@ class CheckIn{
 		string dayOut;
 		string acdayin;
 		string amount;
-		int numNight;
+		string numNight;
 		string numRoom;
 		string code;
 	public:
@@ -55,10 +35,12 @@ class CheckIn{
 		void setCustomerData(string n,string t,string in,string out,int a,int night);
 		void MenuCheckIn();
 		void BookedCode();
+		void check(string num);
+		void c(string code);
 		//void BookedInformation();
 		void CheckInComplete();
 		void WalkInCheckIn();
-		//00void ShowEmptyRoom();
+		//void ShowEmptyRoom();
 		void ChooseRoom();
 		//void Room::ChangeStatus(string No_Room);
 	

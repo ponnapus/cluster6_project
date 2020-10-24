@@ -23,14 +23,14 @@ void Room::add(string No_Room,string type,string people,string price,string stat
 			
 			if(head_room == NULL){
 				head_room = temp;
-				head_room -> next = NULL;
+				head_room -> link = NULL;
 				tail_room = temp;
-				tail_room->next =NULL;
+				tail_room->link =NULL;
 					
 			}else{
-				tail_room->next = temp;
+				tail_room->link = temp;
 				tail_room = temp;
-				tail_room->next = NULL;
+				tail_room->link = NULL;
 			}	
 
 			this->count_room++;
@@ -74,7 +74,7 @@ void Room::write_file(){
 			for(int i=1;i<=count_room;i++){
 						myfile<<i<<","<<temp->num_room<<","<<temp->type_room<<","<<temp->people_room<<","<<temp->price_room<<","<<temp->status_room;
 						myfile<<endl;
-				temp = temp->next;		
+				temp = temp->link;		
 			}
 			
 		}else{
@@ -95,9 +95,12 @@ void Room::ChangeStatus(string No_Room){
 			break;
 		}
 	//	cout << "o"<<temp->status_room;
-		temp=temp->next;
+		temp=temp->link;
 	}
 }
+
+
+
 void Room::show(string num){
 	string check="0";
 	node_room *temp = head_room;
@@ -118,7 +121,7 @@ void Room::show(string num){
 				}	
 				
 			}	
-				temp = temp->next;	
+				temp = temp->link;	
 		}
 		if(check=="0"){
 			cout<<"!!!! Don't have room !!!!!"<<endl;
@@ -137,7 +140,7 @@ void Room::show(string num){
 				}	
 				
 			}
-			temp = temp->next;
+			temp = temp->link;
 		}
 		cout << "=========================================" << endl;
 		
