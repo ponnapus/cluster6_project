@@ -20,7 +20,7 @@ customer::customer()
 		check_out="";
 		countCustomer=0;	
 }
-void customer::addcutomer(string n,string t,string numr,string codebooked,string dayin,string dayout,string checkout,string checkin){
+void customer::addcutomer(string n,string t,string numr,string codebooked,string dayin,string dayout,string checkin,string checkout){
 	nodeCustomer *temp = new nodeCustomer();
 			temp->name = n;
 			temp->tel = t;

@@ -36,25 +36,29 @@ using namespace std;
 
 class CheckIn{
 	protected:
+		customer obj;
 		Room r;
 		string name;
 		string tel;
 		string dayIn;
 		string dayOut;
-		int amount;
+		string acdayin;
+		string amount;
+		int numNight;
 		string numRoom;
+		string code;
 	public:
 		CheckIn();
 		string getRoom();
 		void setRoom(string room);
 		void getCustomerData();
-		void setCustomerData(string n,string t,string in,string out,int a);
+		void setCustomerData(string n,string t,string in,string out,int a,int night);
 		void MenuCheckIn();
 		void BookedCode();
-		void BookedInformation();
+		//void BookedInformation();
 		void CheckInComplete();
 		void WalkInCheckIn();
-		void ShowEmptyRoom();
+		//00void ShowEmptyRoom();
 		void ChooseRoom();
 		//void Room::ChangeStatus(string No_Room);
 	

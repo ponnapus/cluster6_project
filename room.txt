@@ -17,4 +17,4 @@
 17,D203,premium,10,12000,Empty
 18,D303,premium,7,7500,Empty
 19,D403,premium,1,1500,Empty
-20,D102,sweet,2,2000,Empty
+20,D102,sweet,2,2000,Booked

@@ -3,14 +3,14 @@
 #include<iostream>
 #include "customer.h"
 #include "Room.h"
-#include "Bill.h"
+//#include "Bill.h"
 using namespace std;
 class checkout
 {
 	public:
 		Room getRoom;
 		customer getCus;
-		Bill b;
+		//Bill b;
 		string ac_dayout;
 		string roomnumber;
 		int amount_of_day;
@@ -20,6 +20,7 @@ class checkout
 		checkout();
 		string predict_day_tocheckout();
 		void optcheckout();
+		void Receipt();
 	protected:
 };
 

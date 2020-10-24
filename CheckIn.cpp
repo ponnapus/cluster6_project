@@ -52,6 +52,7 @@ class Customer{
 		CheckIn::CheckIn()
 		{
 			numRoom = "";
+			obj.readfile();
 		}
 		string CheckIn::getRoom(){
 			return numRoom;
@@ -64,15 +65,17 @@ class Customer{
 			tel = " ";
 			dayIn = " ";
 			dayOut = " ";
-			amount = 0;
+			amount = " ";
+			numNight = 0;
 		}//get customer data
-		void CheckIn::setCustomerData(string n,string t,string in,string out,int a){
+		/*void CheckIn::setCustomerData(string n,string t,string in,string out,int a,int night){
 			name = n;
 			tel = t;
 			dayIn = in;
 			dayOut = out;
 			amount = a;
-		}//set customer data
+			numNight = night;
+		}//set customer data*/
 		void CheckIn::MenuCheckIn(){
 			cout << "========== CHECK IN ==========" << endl;
 			cout << endl;
@@ -81,32 +84,75 @@ class Customer{
 			cout << endl;
 			cout << "==============================" << endl;
 		}//Menu check in
-		void CheckIn::BookedCode(){
+		void CheckIn::BookedCode( ){
+			string choice;
+			booked:
+			obj.temp = obj.head_customer;
 			cout << "========== CHECK IN ==========" << endl;
 			cout << endl;
-			cout << " Book code : " << endl;//booking code
-			cout << " Day check in : " << endl;//DayCheckIn
-			cout << endl;
-			cout << "==============================" << endl;
+			cout << " Book code : " ;//booking code	
+			cin >> code;
+			for(int i=1;i<=obj.countCustomer;i++)
+			{	
+				if(code == obj.temp->codebooked)
+				{
+					cout << " Day check in : ";//DayCheckIn
+					cin >> acdayin;
+					cout << endl;
+					obj.temp->checkin = acdayin;
+					/*cout << obj.temp->codebooked << " "
+				     	   << obj.temp->name << " "
+				     	   << obj.temp->tel << " "
+				     	   << obj.temp->numroom << " "
+				     	   << obj.temp->dayin << " "
+				     	   << obj.temp->dayout << " "
+					 	   << obj.temp->checkin << " "
+					 	   << obj.temp->checkout << endl;*/
+					cout << "==============================" << endl;
+					/*BookedInformation();
+					cout << "Confirmation? (y/n) : ";
+					cin >> choice;
+					if(choice == "y" || choice == "Y" || choice == "yes" || choice == "Yes" || choice == "YES")
+					{
+						CheckInComplete();
+						Sleep(2000);
+					}
+					else if(choice == "n" || choice == "N" || choice == "no" || choice == "No" || choice == "NO")
+					{
+						goto booked;
+					}*/
+					/*cout << obj.temp->name << endl;
+					cout << obj.temp->tel << endl;
+					cout << obj.temp->dayin << endl;
+					cout << obj.temp->numroom << endl;*/
+					//obj.readfile();			
+					cout << "======BOOKING INFORMATION======" << endl;
+					cout << " Name : " << obj.temp->name << endl; //Name customer
+					cout << " Tel : " << obj.temp->tel << endl; //Tel customer
+					cout << " Day check in : " << obj.temp->dayin << endl; //Day check in
+					cout << " Room number : " << obj.temp->dayin << endl;
+					obj.write_file();
+					break;
+				}
+				else if(i == obj.countCustomer)
+				{
+					cout << "Not found this code" << endl;
+				}
+				obj.temp = obj.temp->next;
+			}
 		}//show booked code
-		void CheckIn::BookedInformation(){
-			cout << "======BOOKING INFORMATION======" << endl;
-			cout << " Name : " << name << endl; //Name customer
-			cout << " Tel : " << tel << endl; //Tel customer
-			cout << " Day check in : " << dayIn << endl; //Day check in
-			cout << " Day check out : " << dayOut << endl; //Day check out
-			cout << " Amount : " << amount << endl; //Number people
-			cout << " Room number : " << numRoom << endl;
-		}//Booked information
+/*		void CheckIn::BookedInformation(){
+		
+		}//Booked information*/
 		void CheckIn::CheckInComplete(){
 			cout << "========== CHECK IN ==========" << endl;
 			cout << "          COMPLETE!!          " << endl;
 			cout << " Name : " << name << endl; //Name customer
 			cout << " Tel : " << tel << endl; //Tel customer
 			cout << " Day check in : " << dayIn << endl; //Day check in
-			cout << " Day check out : " << dayOut << endl; //Day check out
-			cout << " Amount : " << amount << endl; //Number people
-			cout << " Room number : " << numRoom << endl; //Room number
+			//cout << " Num of night : " << numNight << endl; //numNight
+			//cout << " Amount : " << amount << endl; //Number people
+			cout << " Room number : "<< numRoom << endl ; //Room number
 			cout << "===============================" << endl;
 			cout << "  WELCOME TO CLUSTER 6 HOTEL  " << endl;
 		}//check in complete
@@ -119,21 +165,43 @@ class Customer{
 			cin >> tel;
 			cout << " Day check in : " ; //Day check in
 			cin >> dayIn;
-			cout << " Day check out : " ; //Day check out
-			cin >> dayOut;
+			cout << " Num of night : " ; //numNight
+			cin >> numNight;
 			cout << " Amount : " ; //Number people
 			cin >> amount;
 			cout << "=======================================" << endl;
-		}//walk in check in
-		void CheckIn::ShowEmptyRoom(){
-			cout << "========== CHECK IN ==========" << endl;
-			cout << " Empty room" << endl;
-			cout << endl;// 1st Floor 102 105 106 109
-			cout << endl;//2nd 201 207
+			r.readfile();
+			obj.readfile();
+			r.show(amount);
 			cout << "Enter room : " ;
 			cin >> numRoom;//Choose room;
+			r.ChangeStatus(numRoom);
 			cout << "===============================" << endl;
-		}//show empty room
+			/*check customer*/
+			nodeCustomer *cus = obj.head_customer;
+			for(int i=1;i<=obj.countCustomer;i++)
+			{
+				if()
+				{
+					
+				}
+			}
+			/*check room*/
+			node_room *temp = r.head_room;
+			for(int i=1;i<=r.count_room;i++){
+				if(numRoom == temp->num_room){
+				//	cout << "-"<<temp->status_room;
+					temp->status_room="FULL";
+					//cout << "/"<<temp->status_room;
+				break;
+			}
+			//	cout << "o"<<temp->status_room;
+			temp=temp->next;
+			}
+		}//walk in check in
+		/*void CheckIn::ShowEmptyRoom(){
+
+		}//show empty room*/
 		void CheckIn::ChooseRoom(){
 			cout << " Room number : " ; //Room number
 			cin >> numRoom;
