@@ -8,6 +8,7 @@
 #include<fstream>
 #include<iomanip>
 #include<Windows.h>
+#include "CheckIn.h"
 
 
 using namespace std;
@@ -18,8 +19,13 @@ int main(int argc, char** argv) {
 	Booking obj1;
 	Room obj2;
 	Employee login;
+	int MenuCheckIn,dayin,dayout;
+	char choose;
+	string n,b,t,in,out,a,room;
+	stringstream ss;
+	CheckIn s;
 	obj2.readfile();
-	string num_people,choose;
+	string num_people,choice;
 	int result=0;
 	string username;
 	string password;
@@ -51,10 +57,10 @@ int main(int argc, char** argv) {
 		cout << "+ 3. Exit                               +" << endl;
 		cout << "=========================================" << endl;
 		cout << "Enter : " ;
-		cin >> choose;
-	}while(choose!="1"&&choose!="2"&&choose!="3");
-	stringstream ss;
-	ss<<choose;
+		cin >> choice;
+	}while(choice!="1"&&choice!="2"&&choice!="3");
+	//stringstream ss;
+	ss<<choice;
 	ss>>num;
 	ss.clear();
 	switch(num){
@@ -74,6 +80,33 @@ int main(int argc, char** argv) {
 			break;
 		}	
 		case 2:{
+			s.MenuCheckIn();
+			cin>>MenuCheckIn;
+			if(MenuCheckIn==1){   //Booked
+			s.BookedCode();
+			s.BookedInformation();
+			cout << "NEXT or BACK(n/b) : " ;
+			cin >> choose;
+			if(choose = 'n'){
+				s.CheckInComplete();
+			}else if(choose = 'b'){
+				s.MenuCheckIn();
+			}//if check in complete
+			}else if(MenuCheckIn == 2){   //Walk in
+			do{
+				s.getCustomerData();
+				s.WalkInCheckIn();
+				ss>>in;
+				ss<<dayin;
+				ss>>out;
+				ss<<dayout;
+			}while(dayin>30 && dayout>30);
+				s.ShowEmptyRoom();
+				s.getRoom();
+				s.setRoom(room);
+				obj2.ChangeStatus(room);
+				s.CheckInComplete();
+			}//if Menu check in
 			//login
 			break;
 		}
