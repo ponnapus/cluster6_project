@@ -1,14 +1,31 @@
 #ifndef CHECKOUT_H
 #define CHECKOUT_H
-#include <string>
+#include<iostream>
+#include "customer.h"
+#include "Room.h"
+//#include "Bill.h"
 using namespace std;
-class Checkout
+class checkout
 {
 	public:
+		Room getRoom;
+		customer getCus;
+		//Bill b;
 		string ac_dayout;
-		string price;
-		string total;
-		Checkout();
+		string roomnumber;
+		int amount_of_day;
+		float vat;
+		float total;
+		float price;
+		int total_ac_day;
+		int predictday;
+		checkout();
+		string predict_day_tocheckout();
+		void optcheckout();
+		void Receipt();
+		void checkday();
+		int checkday(string dayin,string dayout);
+		
 	protected:
 };
 

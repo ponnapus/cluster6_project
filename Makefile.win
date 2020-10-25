@@ -4,11 +4,11 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = main.o customer.o Employee.o Room.o Output.o Booking.o Review.o node_room.o Hotel.o nodeCustomer.o Checkout.o
-LINKOBJ  = main.o customer.o Employee.o Room.o Output.o Booking.o Review.o node_room.o Hotel.o nodeCustomer.o Checkout.o
-LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
-INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
-CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+OBJ      = main.o customer.o Employee.o Room.o Booking.o Review.o node_room.o Hotel.o nodeCustomer.o CheckIn.o checkout.o
+LINKOBJ  = main.o customer.o Employee.o Room.o Booking.o Review.o node_room.o Hotel.o nodeCustomer.o CheckIn.o checkout.o
+LIBS     = -L"C:/devc++/Dev-Cpp/MinGW64/lib" -L"C:/devc++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"C:/devc++/Dev-Cpp/MinGW64/include" -I"C:/devc++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/devc++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/devc++/Dev-Cpp/MinGW64/include" -I"C:/devc++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/devc++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/devc++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = Project1.exe
 CXXFLAGS = $(CXXINCS) -g3
 CFLAGS   = $(INCS) -g3
@@ -36,9 +36,6 @@ Employee.o: Employee.cpp
 Room.o: Room.cpp
 	$(CPP) -c Room.cpp -o Room.o $(CXXFLAGS)
 
-Output.o: Output.cpp
-	$(CPP) -c Output.cpp -o Output.o $(CXXFLAGS)
-
 Booking.o: Booking.cpp
 	$(CPP) -c Booking.cpp -o Booking.o $(CXXFLAGS)
 
@@ -54,5 +51,8 @@ Hotel.o: Hotel.cpp
 nodeCustomer.o: nodeCustomer.cpp
 	$(CPP) -c nodeCustomer.cpp -o nodeCustomer.o $(CXXFLAGS)
 
-Checkout.o: Checkout.cpp
-	$(CPP) -c Checkout.cpp -o Checkout.o $(CXXFLAGS)
+CheckIn.o: CheckIn.cpp
+	$(CPP) -c CheckIn.cpp -o CheckIn.o $(CXXFLAGS)
+
+checkout.o: checkout.cpp
+	$(CPP) -c checkout.cpp -o checkout.o $(CXXFLAGS)
