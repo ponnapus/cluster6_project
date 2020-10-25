@@ -1,4 +1,5 @@
-#include<iostream>
+#include <iostream>
+#include <sstream>
 #include "checkout.h"
 using namespace std;
 checkout::checkout()
@@ -107,7 +108,7 @@ void checkout::optcheckout()
 			cin >> conf;
 			if(conf == "y" || conf == "Y" || conf == "yes" || conf == "Yes" || conf == "YES")
 			{
-				Receipt
+				Receipt();
 			//	receipt:
 				//b.Receipt();
 			//	cout << "Confirmation? (y/n)" << endl;
