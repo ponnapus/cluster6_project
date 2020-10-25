@@ -12,7 +12,7 @@ Employee::Employee(){
 				
 }
 
-int Employee::inputLogin(string username,string password){
+int Employee::Login(string username,string password){
 	string filein,logUser,logPass;
 	int num=0;
 	ifstream myFile; 

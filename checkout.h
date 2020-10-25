@@ -17,10 +17,15 @@ class checkout
 		float vat;
 		float total;
 		float price;
+		int total_ac_day;
+		int predictday;
 		checkout();
 		string predict_day_tocheckout();
 		void optcheckout();
 		void Receipt();
+		void checkday();
+		int checkday(string dayin,string dayout);
+		
 	protected:
 };
 

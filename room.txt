@@ -1,8 +1,8 @@
 1,A101,normal,3,1500,FULL
 2,A201,normal,1,500,FULL
-3,A301,normal,3,1500,Booked
+3,A301,normal,3,1500,FULL
 4,A102,sweet,2,2000,FULL
-5,A202,sweet,2,2000,Empty
+5,A202,sweet,2,2000,FULL
 6,B102,sweet,2,2000,Empty
 7,B101,normal,1,500,FULL
 8,B201,normal,4,1800,Empty
