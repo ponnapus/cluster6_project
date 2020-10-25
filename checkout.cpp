@@ -1,6 +1,8 @@
 #include <iostream>
 #include <sstream>
+#include<string>
 #include "checkout.h"
+#include"nodeCustomer.h"
 using namespace std;
 checkout::checkout()
 {
@@ -15,6 +17,8 @@ checkout::checkout()
 int checkout::checkday(string dayin,string dayout){
 	int dayinmonth, dayinmonth2,total;
 	string date1, date2,dateeee1,dateeee2;
+	dayin="10/10/2020";
+	dayout="12/10/2020";
 	date1 = dayin;
 	date2 = dayout;
 	dateeee1=date1.substr(3,2);
@@ -32,7 +36,6 @@ int checkout::checkday(string dayin,string dayout){
 		ss.clear();
 	total=dayinmonth2-dayinmonth;
 	cout<<"Total day :"<<total<<endl;
-	
 	 }
 	else{
 	 		if(dateeee1=="01"||dateeee1=="03" ||dateeee1=="05"||dateeee1== "07"||dateeee1== "08"||dateeee1== "10"||dateeee1== "12"){
@@ -69,8 +72,8 @@ int checkout::checkday(string dayin,string dayout){
 		ss<<date2.substr(0,2);
 		ss>>dayinmonth2;
 		ss.clear();
-	total=dayinmonth2+dayinmonth;
-	cout<<"Total day :"<<total<<endl;
+		total=dayinmonth2+dayinmonth;
+		cout<<"Total day :"<<total<<endl;
 	}
 	return total;
 }
@@ -92,9 +95,12 @@ void checkout::optcheckout()
 		if(roomnumber == find->numroom)
 		{
 			info:
+			string tempdayin,tempdayout;
 			find->checkout=ac_dayout;
-			predictday=checkday(find.dayin,find.dayout);
-			total_ac_day=checkday(find.checkin,find.checkout);
+			predictday=checkday(find->dayin,find->dayout);
+			cout<<find->checkin<<endl;
+			cout<<find->checkout<<endl;
+			total_ac_day=checkday(find->checkin,find->checkout);
 			cout << "=================== Customer information ===================" << endl
 				 << "Name : " << find->name << endl
 				 << "Tel : " << find->tel << endl
@@ -107,7 +113,7 @@ void checkout::optcheckout()
 				 << "Confirmation? (y/n): ";
 			cin >> conf;
 			if(conf == "y" || conf == "Y" || conf == "yes" || conf == "Yes" || conf == "YES")
-			{
+			{	getCus.write_file();
 				Receipt();
 			//	receipt:
 				//b.Receipt();
@@ -139,8 +145,8 @@ void checkout::Receipt(){
 	cout << "=================== Receipt ===================" << endl
 		 << "Room number : " << getRoom.No_Room << endl
 		 << "Type room : " << getRoom.type << "	" << getRoom.price <<endl
-		 << "Amount of days : ";
+		 << "Amount of days : "<<total_ac_day<<endl
 		 << "Vat include 7 %" << endl
-		 << "Total : ";
+		 << "Total : "<<endl
 		 << "===============================================" << endl;
 }

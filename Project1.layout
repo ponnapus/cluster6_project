@@ -4,7 +4,7 @@ Focused=20
 [Editor_0]
 CursorCol=6
 CursorRow=120
-TopLine=10
+TopLine=106
 LeftChar=1
 [Editor_1]
 CursorCol=95
@@ -89,7 +89,7 @@ LeftChar=1
 [Editor_17]
 CursorCol=5
 CursorRow=98
-TopLine=109
+TopLine=1
 LeftChar=1
 [Editor_18]
 CursorCol=17
@@ -102,14 +102,14 @@ CursorRow=6
 TopLine=1
 LeftChar=1
 [Editor_19]
-CursorCol=7
-CursorRow=20
+CursorCol=5
+CursorRow=26
 TopLine=1
 LeftChar=1
 [Editor_20]
-CursorCol=17
-CursorRow=24
-TopLine=1
+CursorCol=7
+CursorRow=40
+TopLine=63
 LeftChar=1
 [Editor_22]
 CursorCol=14

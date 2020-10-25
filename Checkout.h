@@ -23,7 +23,7 @@ class checkout
 		string predict_day_tocheckout();
 		void optcheckout();
 		void Receipt();
-		void checkday();
+		//void checkday();
 		int checkday(string dayin,string dayout);
 		
 	protected:
