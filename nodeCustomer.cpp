@@ -6,10 +6,10 @@ nodeCustomer::nodeCustomer(){
 		tel="";
 		numroom="";
 		codebooked="";
-		checkout="";
-		checkin="";
 		dayin="";
 		dayout="";
+		checkin="";
+		checkout="";
 		next=NULL;
 		
 }

@@ -14,8 +14,8 @@ class Employee
 		string password;
 	public:
 		Employee();
-		void Login();
-		int Login(string username,string password);
+		Login();
+		int inputLogin(string username,string password);
 };
 
 #endif

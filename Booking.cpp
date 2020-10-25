@@ -72,7 +72,7 @@ void Booking::book(){
 				cout << "+++++++++++++++++++ BOOKING ++++++++++++++++++++" << endl;
 				cout << "Enter number room : ";
 					cin >> num_room;
-					//cout<<"Numroom : "<<num_room;
+					cout<<"Numroom "<<num_room;
 					if(checkAnswer(num_room)==false){
 						goto booking;
 					}
@@ -81,9 +81,9 @@ void Booking::book(){
 						cin >> day_in;
 			cout << "Enter day out : ";
 			cin >> day_out;
-						cout << "Enter Name : ";
-							cin >> name ;
-						cout << "num tel : " ;
+						cout << "Enter Name and lastname ";
+							cin >> name >> lname;
+						cout << "num tel" ;
 							cin >> tel;
 						cout << "================================================" << endl;
 					}
@@ -121,11 +121,8 @@ void Booking::randomcode(){
 	for(int i=0;i<6;i++){
 		codebook=codebook+code[num[i]];
 	}
-	cout<<"Code: "<<codebook << endl;
-	obj.readfile();	
-	obj.addcutomer(name+lname,tel,num_room,codebook,day_in,day_out,"-","-");
-	obj.write_file();
-	
+	cout<<"Code: "<<codebook;	
+	obj.write_file(name,lname,tel,num_room,codebook,day_in,day_out,"-","-");
 
 //return codebook;	
 }
