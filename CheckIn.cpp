@@ -96,14 +96,16 @@ void CheckIn::MenuCheckIn(){
 					obj.write_file();
 					r.ChangeStatus(obj.temp->numroom,"FULL");//change status 
 					r.write_file();
+					Sleep(2000);
+					cout << endl << endl;
 					cout << "========== CHECK IN ==========" << endl;
 					cout << "          COMPLETE!!          " << endl;
 					cout << " Name : " << obj.temp->name << endl; //Name customer
 					cout << " Tel : " << obj.temp->tel << endl; //Tel customer
 					cout << " Day check in : " << obj.temp->dayin << endl; //Day check in
 					cout << " Room number : "<< obj.temp->numroom << endl ; //Room number
-					cout << "=======================================" << endl;
-					cout << "   	WELCOME TO OO SAD HOTEL   " << endl;
+					cout << "==============================" << endl << endl;
+					cout << "   WELCOME TO OO SAD HOTEL   " << endl << endl;
 					break;
 				}
 				else if(i == obj.countCustomer)
@@ -116,7 +118,7 @@ void CheckIn::MenuCheckIn(){
 		}//check in complete
 	
 		void CheckIn::WalkInCheckIn(){
-			cout << "===============CHECK IN===============" << endl;
+			cout << endl <<"===============CHECK IN===============" << endl;
 			cout << " Please input your information" << endl;
 			cout << " Name : " ; //Name customer
 			cin >> name;
@@ -126,7 +128,7 @@ void CheckIn::MenuCheckIn(){
 			cin >> dayIn;
 			cout << " Day you think check out(day/mont/year) : " ; //Day check out
 			cin >> dayOut;//zee add
-			cout << " Amount : " ; //Number people
+			cout << " Amount of people : " ; //Number people
 			cin >> amount;
 			cout << "========================================" << endl;
 
@@ -161,6 +163,7 @@ void CheckIn::MenuCheckIn(){
 			}*/
 			
 			obj.write_file();
+			cout << "Check-in completed !" << endl;
 		}//walk in check in
 		
 		

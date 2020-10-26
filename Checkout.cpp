@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include <string>
 #include "checkout.h"
 #include"nodeCustomer.h"
@@ -14,6 +15,7 @@ checkout::checkout()
 	total = 0.00;
 	predictday = 0;
 	getRoom.readfile();
+	getCus.readfile();
 }
 int checkout::checkday(string dayin,string dayout){
 	int dayinmonth, dayinmonth2,total;
@@ -84,13 +86,12 @@ void checkout::optcheckout()
 {
 	//string roomnumber;
 	string conf;
+	recheckout:
 	cout << endl << "=================== Check out ===================" << endl;
 	cout << "Input Room number : ";
 	cin >> roomnumber;
 	cout << "Input actual day check-out : ";
 	cin >> ac_dayout;
-	
-	getCus.readfile();
 	nodeCustomer *find = getCus.head_customer;
 	for(int i=1;i<=getCus.countCustomer;i++)
 	{
@@ -117,21 +118,17 @@ void checkout::optcheckout()
 			if(conf == "y" || conf == "Y" || conf == "yes" || conf == "Yes" || conf == "YES")
 			{	
 				//getRoom.ChangeSta()
-				if(find->numroom == roomnumber)
-				{
-				}
-				else
-				{
-					getCus.write_file();
-				}
 				getRoom.write_file();
 				Receipt(roomnumber);
+				writecheckout(find->name);
+				//getCus.write_file();
 				cout << "Confirmation? (y/n): ";
 				cin >> conf;
 				if(conf == "y" || conf == "Y" || conf == "yes" || conf == "Yes" || conf == "YES")
 				{
 					getRoom.ChangeStatus(roomnumber, "Empty");
 					getRoom.write_file();
+					cout << "Check-out completed !" << endl;
 				}
 				else if(conf == "n" || conf == "N" || conf == "no" || conf == "No" || conf == "NO")
 				{
@@ -151,7 +148,7 @@ void checkout::optcheckout()
 			}
 			else if(conf == "n" || conf == "N" || conf == "no" || conf == "No" || conf == "NO")
 			{
-				goto info;
+				goto recheckout;
 			}
 			break;
 		}
@@ -169,7 +166,7 @@ void checkout::Receipt(string room){
 		if(temp->num_room==room){
 			cout << endl << "=================== Receipt ===================" << endl
 		 		 << "Room number : " << roomnumber << endl
-		 		 << "Type room : " << getRoom.type << "	price : " << getRoom.price <<endl
+		 		 << "Type room : " << temp->type_room << "	price : " << temp->price_room <<endl
 		 		 << "Amount of days : "<<total_ac_day<<endl
 		 		 << "Vat include 7 %" << endl
 		 		 << "Total : "<<calculate(roomnumber)<<endl
@@ -214,6 +211,36 @@ float checkout::calculate(string room){
 	else{
 		return total;
 	}
-
-	
+}
+ void checkout:: writecheckout(string name){
+ 		nodeCustomer *temp = getCus.head_customer;
+				ofstream myfile ("customer.txt",ios::out);
+				if (myfile.is_open()){
+					temp = getCus.head_customer;
+					for(int i=1;i<=getCus.countCustomer;i++){
+						if(temp->name==name){
+							ofstream myfile ("History.txt",ios::app);
+							if (myfile.is_open()){
+								myfile<<temp->name<<","<<temp->tel<<","<<temp->numroom<<","<<temp->codebooked<<","<<temp->dayin<<","<<temp->dayout
+								<<","<<temp->checkin<<","<<temp->checkout;
+								myfile<<endl;
+							}
+						else{
+							cout << "!!! Not open !!!"<< endl;
+						}
+				myfile.close();
+						}
+						
+						else{
+							myfile<<temp->name<<","<<temp->tel<<","<<temp->numroom<<","<<temp->codebooked<<","<<temp->dayin<<","<<temp->dayout
+							<<","<<temp->checkin<<","<<temp->checkout;
+							myfile<<endl;	
+						}
+					
+						temp = temp->next;		
+					}	
+				}else{
+					cout << "!!! Not open !!!"<< endl;
+				}
+				myfile.close();
 }

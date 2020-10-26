@@ -69,17 +69,18 @@ void Booking::book(){
 					cin >> num_room;
 					//cout<<"Numroom : "<<num_room;
 					if(checkAnswer(num_room)==false){
+						cout << "Not found this room !" << endl;
 						goto booking;
 					}
 					else if(checkAnswer(num_room)==true){
 						cout << "Enter day in : ";
 						cin >> day_in;
-			cout << "Enter day out : ";
-			cin >> day_out;
+						cout << "Enter day out : ";
+						cin >> day_out;
 						cout << "Enter Name : ";
-							cin >> name ;
+						cin >> name ;
 						cout << "num tel : " ;
-							cin >> tel;
+						cin >> tel;
 						cout << "================================================" << endl;
 					}
 				

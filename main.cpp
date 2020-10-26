@@ -37,6 +37,7 @@ int main(int argc, char** argv) {
 //	system("cls");
 	int num;
 	do{
+		system("cls");
 		cout << endl << "============== OO SAD Hotel =============" << endl;
 				cout << "+ 1. Customer                           +" << endl;
 				cout << "+ 2. Employee                           +" << endl;
@@ -52,6 +53,7 @@ int main(int argc, char** argv) {
 	switch(num){
 		case 1:{
 			menucustomer:
+			system("cls");
 			cout << endl << "============== Customer =============" << endl
 						 << "1.Booking" << endl
 						 << "2.Review" << endl
@@ -61,8 +63,10 @@ int main(int argc, char** argv) {
 				 	cin >> choice;
 			if(choice == "1")
 			{
+				cout << "============== Search room =============" << endl;
 				cout << "Enter Num People : ";
 				cin >> num_people;
+				system("cls");
 				obj2.show(num_people);
 				cout << "==== Booking ===="<< endl;
 				cout << "1. Booking" << endl;
@@ -77,6 +81,8 @@ int main(int argc, char** argv) {
 						obj2.write_file();
 						obj1.randomcode();
 						cout << "Booked thank you !" << endl;
+						cout << "Input anykey to continue :";
+						cin >> choice;
 						goto menucustomer;
 					}
 					else if(choice=="2"){
@@ -121,17 +127,18 @@ int main(int argc, char** argv) {
 	}while(result != 1);
 			menuemployee:
 			cout << endl << "============== Employee ==============" << endl
-				 << "1.Check-in" << endl
-				 << "2.Check-out" << endl
-				 << "3.Logout" << endl
-				 << "4.Exit" << endl
-				 << "======================================" << endl
-				 << "Input your choice : ";
+						 << "1.Check-in" << endl
+						 << "2.Check-out" << endl
+						 << "3.Logout" << endl
+						 << "4.Exit" << endl
+						 << "======================================" << endl
+						 << "Input your choice : ";
 			cin >> choice;
 			if(choice == "1")
 			{
 				menucheckin:
 				s.MenuCheckIn();
+				cout << "Input your choice : ";
 				cin>>MenuCheckIn;
 				if(MenuCheckIn==1){  //Booked
 					s.BookedCode();
@@ -141,6 +148,7 @@ int main(int argc, char** argv) {
 				//do{
 					s.getCustomerData();
 					s.WalkInCheckIn();
+					goto menuemployee;
 					/*ss<<in;
 					ss>>dayin;
 					ss.clear();

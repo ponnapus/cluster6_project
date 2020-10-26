@@ -27,6 +27,7 @@ class checkout
 		//void checkday();
 		int checkday(string dayin,string dayout);
 		float calculate(string room);
+		void writecheckout(string name);
 	protected:
 };
 

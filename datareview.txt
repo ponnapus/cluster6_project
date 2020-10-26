@@ -26,3 +26,4 @@
 6,Â,ffffff
 5,Sup,Very
 5,Noice,NiceNiceNice
+10,Oice,NiceNiceNice
