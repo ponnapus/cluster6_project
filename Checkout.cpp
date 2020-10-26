@@ -1,8 +1,9 @@
 #include <iostream>
 #include <sstream>
-#include<string>
+#include <string>
 #include "checkout.h"
 #include"nodeCustomer.h"
+#include"node_room.h"
 using namespace std;
 checkout::checkout()
 {
@@ -11,20 +12,20 @@ checkout::checkout()
 	amount_of_day = 0;
 	vat = 0.07;
 	total = 0.00;
-	price = 0.00;
 	predictday = 0;
+	getRoom.readfile();
 }
 int checkout::checkday(string dayin,string dayout){
 	int dayinmonth, dayinmonth2,total;
 	string date1, date2,dateeee1,dateeee2;
-	dayin="10/10/2020";
-	dayout="12/10/2020";
 	date1 = dayin;
 	date2 = dayout;
 	dateeee1=date1.substr(3,2);
 	dateeee2=date2.substr(3,2);
-	cout<<dateeee1<<" "<<dateeee2<<endl;
+	//cout<<dateeee1<<" "<<dateeee2<<endl;
 	 if(dateeee1==dateeee2){
+	 	//cout<<dateeee1<<endl;
+	 //	cout<<dateeee2<<endl;
 	 	int temp;
 	 	stringstream ss;
 		ss<<date2.substr(0,2);
@@ -35,7 +36,7 @@ int checkout::checkday(string dayin,string dayout){
 		dayinmonth--;
 		ss.clear();
 	total=dayinmonth2-dayinmonth;
-	cout<<"Total day :"<<total<<endl;
+//	cout<<"Total day1 :"<<total<<endl;
 	 }
 	else{
 	 		if(dateeee1=="01"||dateeee1=="03" ||dateeee1=="05"||dateeee1== "07"||dateeee1== "08"||dateeee1== "10"||dateeee1== "12"){
@@ -46,7 +47,7 @@ int checkout::checkday(string dayin,string dayout){
 				ss.clear();
 				temp--;
 				dayinmonth=31-temp;
-				cout<<dayinmonth<<endl;
+				//cout<<dayinmonth<<endl;
 			}
 			else if(dateeee1=="02"){
 				int temp;
@@ -56,7 +57,7 @@ int checkout::checkday(string dayin,string dayout){
 				ss.clear();
 				temp--;
 				dayinmonth=28-temp;
-				cout<<dayinmonth<<endl;				
+			//	cout<<dayinmonth<<endl;				
 			}
 			else{
 				int temp;
@@ -66,14 +67,14 @@ int checkout::checkday(string dayin,string dayout){
 				ss.clear();
 				temp--;
 				dayinmonth=30-temp;
-				cout<<dayinmonth<<endl;
+			//	cout<<dayinmonth<<endl;
 			}
 		stringstream ss;
 		ss<<date2.substr(0,2);
 		ss>>dayinmonth2;
 		ss.clear();
 		total=dayinmonth2+dayinmonth;
-		cout<<"Total day :"<<total<<endl;
+		cout<<"Total day2 :"<<total<<endl;
 	}
 	return total;
 }
@@ -83,6 +84,7 @@ void checkout::optcheckout()
 {
 	//string roomnumber;
 	string conf;
+	cout << endl << "=================== Check out ===================" << endl;
 	cout << "Input Room number : ";
 	cin >> roomnumber;
 	cout << "Input actual day check-out : ";
@@ -95,13 +97,13 @@ void checkout::optcheckout()
 		if(roomnumber == find->numroom)
 		{
 			info:
-			string tempdayin,tempdayout;
+			//string tempdayin,tempdayout;
 			find->checkout=ac_dayout;
 			predictday=checkday(find->dayin,find->dayout);
-			cout<<find->checkin<<endl;
-			cout<<find->checkout<<endl;
+		//	cout<<find->checkin<<endl;
+			//cout<<find->checkout<<endl;
 			total_ac_day=checkday(find->checkin,find->checkout);
-			cout << "=================== Customer information ===================" << endl
+			cout << endl << "=================== Customer information ===================" << endl
 				 << "Name : " << find->name << endl
 				 << "Tel : " << find->tel << endl
 				 << "Room number : " << find->numroom << endl
@@ -113,8 +115,28 @@ void checkout::optcheckout()
 				 << "Confirmation? (y/n): ";
 			cin >> conf;
 			if(conf == "y" || conf == "Y" || conf == "yes" || conf == "Yes" || conf == "YES")
-			{	getCus.write_file();
-				Receipt();
+			{	
+				//getRoom.ChangeSta()
+				if(find->numroom == roomnumber)
+				{
+				}
+				else
+				{
+					getCus.write_file();
+				}
+				getRoom.write_file();
+				Receipt(roomnumber);
+				cout << "Confirmation? (y/n): ";
+				cin >> conf;
+				if(conf == "y" || conf == "Y" || conf == "yes" || conf == "Yes" || conf == "YES")
+				{
+					getRoom.ChangeStatus(roomnumber, "Empty");
+					getRoom.write_file();
+				}
+				else if(conf == "n" || conf == "N" || conf == "no" || conf == "No" || conf == "NO")
+				{
+					goto info;
+				}
 			//	receipt:
 				//b.Receipt();
 			//	cout << "Confirmation? (y/n)" << endl;
@@ -139,14 +161,59 @@ void checkout::optcheckout()
 		}
 		find = find->next;
 	}
-	getRoom.readfile();
+//	getRoom.write_file();
 }
-void checkout::Receipt(){	
-	cout << "=================== Receipt ===================" << endl
-		 << "Room number : " << getRoom.No_Room << endl
-		 << "Type room : " << getRoom.type << "	" << getRoom.price <<endl
-		 << "Amount of days : "<<total_ac_day<<endl
-		 << "Vat include 7 %" << endl
-		 << "Total : "<<endl
-		 << "===============================================" << endl;
+void checkout::Receipt(string room){	
+	node_room *temp = getRoom.head_room;
+	for(int i=0;i<getRoom.count_room;i++){
+		if(temp->num_room==room){
+			cout << endl << "=================== Receipt ===================" << endl
+		 		 << "Room number : " << roomnumber << endl
+		 		 << "Type room : " << getRoom.type << "	price : " << getRoom.price <<endl
+		 		 << "Amount of days : "<<total_ac_day<<endl
+		 		 << "Vat include 7 %" << endl
+		 		 << "Total : "<<calculate(roomnumber)<<endl
+		 		 << "===============================================" << endl;
+		 	break;
+		}
+		temp=temp->link;
+	}
+	
+}
+float checkout::calculate(string room){
+	node_room *temp = getRoom.head_room;
+	for(int i=0;i<getRoom.count_room;i++){
+		if(temp->num_room==room){	
+		 	break;
+		}
+		temp=temp->link;
+	}
+	stringstream ss;
+	
+	ss<<temp->price_room;
+	ss>>total;
+	ss.clear();
+	total=total*predictday;
+	
+	nodeCustomer *Customer = getCus.head_customer;
+	for(int i=0;i<getCus.countCustomer;i++){
+		if(Customer->numroom==room){	
+		 	break;
+		}
+		Customer=Customer->next;
+	}
+	ss<<temp->price_room;
+	int tmp;
+	ss>>tmp;
+	ss.clear();
+	if(checkday (Customer->dayout,Customer->checkout )-1>=0){
+			total=total+( (checkday (Customer->dayout,Customer->checkout )-1) * (tmp+500));
+			total=total+(total*vat);
+			return total;	
+	}
+	else{
+		return total;
+	}
+
+	
 }

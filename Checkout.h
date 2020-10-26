@@ -2,6 +2,7 @@
 #define CHECKOUT_H
 #include<iostream>
 #include "customer.h"
+#include"node_room.h"
 #include "Room.h"
 //#include "Bill.h"
 using namespace std;
@@ -11,21 +12,21 @@ class checkout
 		Room getRoom;
 		customer getCus;
 		//Bill b;
+		int people;
 		string ac_dayout;
 		string roomnumber;
 		int amount_of_day;
 		float vat;
 		float total;
-		float price;
 		int total_ac_day;
 		int predictday;
 		checkout();
 		string predict_day_tocheckout();
 		void optcheckout();
-		void Receipt();
+		void Receipt(string room);
 		//void checkday();
 		int checkday(string dayin,string dayout);
-		
+		float calculate(string room);
 	protected:
 };
 

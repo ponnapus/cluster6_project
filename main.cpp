@@ -10,13 +10,16 @@
 #include<Windows.h>
 #include "CheckIn.h"
 #include"checkout.h"
+#include "Review.h"
 using namespace std;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
+	menumain:
 	checkout check_out;
 	customer obj; 
 	Booking obj1;
+	Review review;
 	Room obj2;
 	Employee login;
 	int MenuCheckIn,dayin,dayout;
@@ -34,13 +37,12 @@ int main(int argc, char** argv) {
 //	system("cls");
 	int num;
 	do{
-		menumain:
-		cout << "============== OO SAD Hotel =============" << endl;
-		cout << "+ 1. Customer                           +" << endl;
-		cout << "+ 2. Employee                           +" << endl;
-		cout << "+ 3. Exit                               +" << endl;
-		cout << "=========================================" << endl;
-		cout << "Enter : " ;
+		cout << endl << "============== OO SAD Hotel =============" << endl;
+				cout << "+ 1. Customer                           +" << endl;
+				cout << "+ 2. Employee                           +" << endl;
+				cout << "+ 3. Exit                               +" << endl;
+				cout << "=========================================" << endl;
+				cout << "Enter : " ;
 		cin >> choice;
 	}while(choice!="1"&&choice!="2"&&choice!="3");
 	//stringstream ss;
@@ -48,22 +50,60 @@ int main(int argc, char** argv) {
 	ss>>num;
 	ss.clear();
 	switch(num){
-		case 1:{		
-			cout << "Enter Num People : ";
-			cin >> num_people;
-			obj2.show(num_people);
-			obj1.book();
-			obj2.ChangeStatus(obj1.num_room);
-		//	obj2.show(num_people);
-			obj2.write_file();
-			obj1.randomcode();
+		case 1:{
+			menucustomer:
+			cout << endl << "============== Customer =============" << endl
+						 << "1.Booking" << endl
+						 << "2.Review" << endl
+						 << "3.Back" << endl
+				 		 << "=====================================" << endl
+				 		 << "Input your choice : ";
+				 	cin >> choice;
+			if(choice == "1")
+			{
+				cout << "Enter Num People : ";
+				cin >> num_people;
+				obj2.show(num_people);
+				cout << "==== Booking ===="<< endl;
+				cout << "1. Booking" << endl;
+				cout << "2. return home" << endl;
+				cout << "=================" << endl;
+				cout << "Enter : ";
+				cin >> choice;
+					if(choice=="1"){
+						obj1.book();
+						obj2.ChangeStatus(obj1.num_room,"Booked");
+						//	obj2.show(num_people);
+						obj2.write_file();
+						obj1.randomcode();
+						cout << "Booked thank you !" << endl;
+						goto menucustomer;
+					}
+					else if(choice=="2"){
+						goto menumain;
+					}
 			//cout << "hh";
 		//	obj.write_file();
-			break;
+				break;
+			}
+			else if(choice == "2")
+			{
+				review.reviewhotel();
+				goto menumain;
+			}
+			else if(choice == "3")
+			{
+				goto menumain;
+			}
+			else
+			{
+				cout << "Error, wrong choice" << endl;
+				goto menucustomer;
+			}
 		}	
 		case 2:{
 			do{
-			cout<<"*******************************"<<endl;
+			cout<<endl<<"*******************************"<<endl;
 			cout<<"************ LOGIN ************"<<endl;
 			cout<<"  Enter username : ";
 			cin>>username;
@@ -80,12 +120,13 @@ int main(int argc, char** argv) {
 			}
 	}while(result != 1);
 			menuemployee:
-			cout << "============== Employee ==============" << endl
+			cout << endl << "============== Employee ==============" << endl
 				 << "1.Check-in" << endl
 				 << "2.Check-out" << endl
-				 << "3.Exit" << endl
+				 << "3.Logout" << endl
+				 << "4.Exit" << endl
 				 << "======================================" << endl
-				 << "Input your choice : " << endl;
+				 << "Input your choice : ";
 			cin >> choice;
 			if(choice == "1")
 			{
@@ -95,13 +136,7 @@ int main(int argc, char** argv) {
 				if(MenuCheckIn==1){  //Booked
 					s.BookedCode();
 					//s.BookedInformation();
-					cout << "NEXT or BACK(n/b) : " ;
-					cin >> choose;
-					if(choose == "n"){
-					//	s.CheckInComplete();
-					}else if(choose == "b"){
-						goto menucheckin;
-					}//if check in complete
+					goto menucheckin;
 				}else if(MenuCheckIn == 2){   //Walk in
 				//do{
 					s.getCustomerData();
@@ -118,15 +153,27 @@ int main(int argc, char** argv) {
 				//s.setRoom(room);
 				//obj2.ChangeStatus(room);
 			//	s.CheckInComplete();
-				}//if Menu check in
-			//login
-				break;
+				}
+				else if(MenuCheckIn == 3){
+					goto menuemployee;
+				}
+				else
+				{
+				system("cls");
+				cout << "Error, wrong choice" << endl;
+				goto menucheckin;
+				}
 			}
 			else if(choice == "2")
 			{
 				check_out.optcheckout();	
+				goto menuemployee;
 			}
 			else if(choice == "3")
+			{
+				goto menumain;
+			}
+			else if(choice == "4")
 			{
 				goto exit;
 			}

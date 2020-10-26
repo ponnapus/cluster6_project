@@ -9,7 +9,8 @@ class Room
 	public:
 		node_room *head_room;
 		node_room *tail_room;
-		string num;
+		node_room *temp;
+		//string num;
 		string No_Room;
 		string type;
 		string people;
@@ -22,8 +23,11 @@ class Room
 		void readfile();
 		void show(string num);
 		void write_file();
-		void ChangeStatus(string No_Room);
-		void ChangeSta(string No_Room);
+		void ChangeStatus(string No_Room,string status);
+		bool checkinyet(string room);
+	//	void ChangeSta(string No_Room);
+		node_room findroom(string room);
+		
 	protected:
 		
 };

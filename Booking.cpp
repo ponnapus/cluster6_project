@@ -61,13 +61,8 @@ void Booking::book(){
 			//cout << "Enter Num People : ";
 			//cin >> num_people;
 			//	data();
-			cout << "Booking"<< endl;
-			cout << "1. Booking" << endl;
-			cout << "2. return home" << endl;
-			cout << "=================" << endl;
-			cout << "Enter : ";
-				cin >> num_booking;
-			if(num_booking == 1){
+		
+			
 				booking:
 				cout << "+++++++++++++++++++ BOOKING ++++++++++++++++++++" << endl;
 				cout << "Enter number room : ";
@@ -88,9 +83,7 @@ void Booking::book(){
 						cout << "================================================" << endl;
 					}
 				
-			}else if(num_booking == 2){
-				cout<<"Loading............"<<endl;
-			}	
+				
 }
 /*
 string Booking::getnumroom(){

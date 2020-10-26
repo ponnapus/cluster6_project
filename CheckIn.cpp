@@ -38,12 +38,13 @@ void CheckIn::MenuCheckIn(){
 	cout << endl;
 	cout << "  1. Booked " << endl;
 	cout << "  2. Walk in " << endl;
+	cout << "  3. Return " << endl;
 	cout << endl;
 	cout << "==============================" << endl;
 }//Menu check in
 
 
-	void CheckIn::check(string num){	
+	/*void CheckIn::check(string num){	
 		node_room *temp = r.head_room;
 			for(int i=1;i<=r.count_room;i++){
 				if(num == temp->num_room){
@@ -59,27 +60,33 @@ void CheckIn::MenuCheckIn(){
 			//	cout << "o"<<temp->status_room;
 			temp=temp->link;
 			}
-	}
+	}*/
 	
-	void CheckIn::BookedCode( ){
+	void CheckIn::BookedCode(){
 			string choice;
 			booked:
 			obj.temp = obj.head_customer;
+			
 			cout << "========== CHECK IN ==========" << endl;
 			cout << endl;
-			cout << " Book code : " << endl;//booking code
-			cout << " Day check in : " << endl;//DayCheckIn
-			cout << endl;
-			cout << "==============================" << endl;
+			//cout << " Book code : " << endl;//booking code
+			//cout << " Day check in : " << endl;//DayCheckIn
+			//cout << endl;
+			//cout << "==============================" << endl;
 			cout << " Book code : " ;//booking code	
 			cin >> code;
 			for(int i=1;i<=obj.countCustomer;i++){	
-				if(code == obj.temp->codebooked)
-				{
+					
+				 if(code == obj.temp->codebooked){
+					if(r.checkinyet(obj.temp->numroom)==true){
+						cout<<"You have checked in !!!!!"<<endl;
+						break;
+					}
 					cout << " Day check in : ";//DayCheckIn
 					cin >> acdayin;
-					cout << endl;
 					obj.temp->checkin = acdayin;
+			cout << endl;
+			cout << "==============================" << endl;
 							
 					cout << "======BOOKING INFORMATION======" << endl;
 					cout << " Name : " << obj.temp->name << endl; //Name customer
@@ -87,31 +94,25 @@ void CheckIn::MenuCheckIn(){
 					cout << " Day check in : " << obj.temp->dayin << endl; //Day check in
 					cout << " Room number : " << obj.temp->numroom << endl;
 					obj.write_file();
+					r.ChangeStatus(obj.temp->numroom,"FULL");//change status 
+					r.write_file();
+					cout << "========== CHECK IN ==========" << endl;
+					cout << "          COMPLETE!!          " << endl;
+					cout << " Name : " << obj.temp->name << endl; //Name customer
+					cout << " Tel : " << obj.temp->tel << endl; //Tel customer
+					cout << " Day check in : " << obj.temp->dayin << endl; //Day check in
+					cout << " Room number : "<< obj.temp->numroom << endl ; //Room number
+					cout << "=======================================" << endl;
+					cout << "   	WELCOME TO OO SAD HOTEL   " << endl;
 					break;
 				}
 				else if(i == obj.countCustomer)
 				{
 					cout << "Not found this code" << endl;
+					break;
 				}
 				obj.temp = obj.temp->next;
-			}
-		//	cout<<"wadawdwadadawdadaw : "<<obj.temp->numroom;
-			check(obj.temp->numroom);
-		//	r.ChangeStatus(obj.temp->numroom);
-			
-		//show booked code
-					
-			cout << "========== CHECK IN ==========" << endl;
-			cout << "          COMPLETE!!          " << endl;
-			cout << " Name : " << obj.temp->name << endl; //Name customer
-			cout << " Tel : " << obj.temp->tel << endl; //Tel customer
-			cout << " Day check in : " << obj.temp->dayin << endl; //Day check in
-			//cout << " Num of night : " << numNight << endl; //numNight
-			//cout << " Amount : " << amount << endl; //Number people
-			cout << " Room number : "<< obj.temp->numroom << endl ; //Room number
-			cout << "=======================================" << endl;
-			cout << "   	WELCOME TO OO SAD HOTEL   " << endl;
-
+			}		
 		}//check in complete
 	
 		void CheckIn::WalkInCheckIn(){
@@ -142,8 +143,9 @@ void CheckIn::MenuCheckIn(){
 			/*check room*/
 			
 		//	node_room *temp = r.head_room;
-			
-			check(numRoom);
+			r.ChangeStatus(numRoom,"FULL");
+			r.write_file();
+		//	check(numRoom);
 		/*	for(int i=1;i<=r.count_room;i++){
 				if(numRoom == temp->num_room){
 				//	cout << "-"<<temp->status_room;

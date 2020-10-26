@@ -35,7 +35,7 @@ class CheckIn{
 		void setCustomerData(string n,string t,string in,string out,int a,int night);
 		void MenuCheckIn();
 		void BookedCode();
-		void check(string num);
+		//void check(string num);
 		void c(string code);
 		//void BookedInformation();
 		void CheckInComplete();

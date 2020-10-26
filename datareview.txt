@@ -24,3 +24,5 @@
 8,dddq,cdcs
 6.4,cscswf,vdvvdsv
 6,Â,ffffff
+5,Sup,Very
+5,Noice,NiceNiceNice

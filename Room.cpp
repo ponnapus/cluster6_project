@@ -8,9 +8,16 @@
 using namespace std;
 Room::Room()
 {
-		head_room =NULL;
-		tail_room =NULL;
-		count_room = 0;
+	head_room=NULL;
+	tail_room=NULL;
+	temp=NULL;
+	//num="";
+	No_Room="";
+	type="";
+	people="";
+	price="";
+	status="";
+	count_room=0;
 }
 
 void Room::add(string No_Room,string type,string people,string price,string status){
@@ -47,9 +54,6 @@ void Room::readfile(){
 		
 		}else{
 		while(getline(myfile,line)){	
-		
-
-				num = line.substr(0,line.find(d));
 					line.erase(0,line.find(d)+1);
 				No_Room = line.substr(0,line.find(d));
 					line.erase(0,line.find(d)+1);
@@ -83,13 +87,31 @@ void Room::write_file(){
 			myfile.close();	
 			
 }
-void Room::ChangeStatus(string No_Room){
+bool Room::checkinyet(string room){
+	node_room *temp = head_room;
+	for(int i=1;i<=count_room;i++){
+		if(room==temp->num_room){
+				//	cout << "-"<<temp->status_room;
+			if(temp->status_room=="FULL"){
+				//cout<<"Room:"<<room<<"Temproom"<<;
+				return true;
+			}
+			else{
+				return false;
+			}
+			break;
+		}
+	//	cout << "o"<<temp->status_room;
+		temp=temp->link;
+	}
+}
+void Room::ChangeStatus(string No_Room,string status){
 	node_room *temp = head_room;
 	for(int i=1;i<=count_room;i++){
 		if(No_Room==temp->num_room){
 				//	cout << "-"<<temp->status_room;
-
-			temp->status_room="Booked";
+			
+			temp->status_room=status;
 					//cout << "/"<<temp->status_room;
 
 			break;
@@ -115,7 +137,7 @@ void Room::show(string num){
 			//cout << "="<<temp->type_room<<  endl;
 			if(temp->status_room=="Empty"){
 				if(num == temp->people_room){
-				cout << temp->num_room << "\t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
+				cout << temp->num_room << "\t\t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
 			//	cout << temp->status_room;
 					check="1";
 				}	
@@ -135,13 +157,29 @@ void Room::show(string num){
 			//cout << "="<<temp->type_room<<  endl;
 			if(temp->status_room=="Empty"){
 				if(num != temp->people_room){
-					cout << temp->num_room << "\t" << temp->people_room  << "people \t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
+					cout << temp->num_room << "\t" << temp->people_room  << " people \t"<< temp->type_room << "\t\t"<<temp->price_room<< "$"<< endl;
 				
 				}	
 				
 			}
 			temp = temp->link;
 		}
-		cout << "=========================================" << endl;
+		cout << "=====================================================" << endl;
 		
+}
+node_room Room:: findroom(string room){
+	node_room *temp = head_room;
+		for(int i=1;i<=count_room;i++){
+			if(temp->num_room==room){
+				return *temp;
+				break;
+			}
+			else if(i==count_room){
+				cout<<"Not found room"<<endl;
+				temp=NULL;
+				return *temp;
+				break;
+			}
+			temp=temp->link;	
+		}
 }
