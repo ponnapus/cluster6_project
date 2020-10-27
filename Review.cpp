@@ -68,6 +68,51 @@ void Review::icon(string namefile){
 			}
 	infile.close();
 	}
+	if(namefile=="star1"){
+		ifstream infile("star1.txt",std::ios::in);
+				if(infile.is_open()){
+					while( getline(infile,filein) ) {
+						cout<<filein<<endl;
+					}
+				}
+		infile.close();
+		}
+		if(namefile=="star2"){
+		ifstream infile("star2.txt",std::ios::in);
+				if(infile.is_open()){
+					while( getline(infile,filein) ) {
+						cout<<filein<<endl;
+					}
+				}
+		infile.close();
+		}
+		if(namefile=="star3"){
+		ifstream infile("star3.txt",std::ios::in);
+				if(infile.is_open()){
+					while( getline(infile,filein) ) {
+						cout<<filein<<endl;
+					}
+				}
+		infile.close();
+		}
+		if(namefile=="star4"){
+		ifstream infile("star4.txt",std::ios::in);
+				if(infile.is_open()){
+					while( getline(infile,filein) ) {
+						cout<<filein<<endl;
+					}
+				}
+		infile.close();
+		}
+		if(namefile=="star5"){
+		ifstream infile("star5.txt",std::ios::in);
+				if(infile.is_open()){
+					while( getline(infile,filein) ) {
+						cout<<filein<<endl;
+					}
+				}
+		infile.close();
+		}
 }
 void Review::reviewhotel(){
 	string ch;
