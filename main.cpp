@@ -16,7 +16,7 @@ using namespace std;
 
 int main(int argc, char** argv) {
 	menumain:
-	checkout check_out;
+	//checkout check_out;
 	customer obj; 
 	Booking obj1;
 	Review review;
@@ -174,6 +174,9 @@ int main(int argc, char** argv) {
 			}
 			else if(choice == "2")
 			{
+				checkout check_out;
+				//obj.readfile();
+				//obj2.readfile();
 				check_out.optcheckout();	
 				goto menuemployee;
 			}

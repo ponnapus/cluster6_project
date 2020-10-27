@@ -30,3 +30,4 @@
 9.5,praew,so
 10,ping,good
 2,zee,-
+10,uu,-

@@ -1,7 +1,7 @@
 1,A101,normal,3,1500,Empty
 2,A201,normal,1,500,Empty
 3,A301,normal,3,1500,Empty
-4,A102,sweet,2,2000,Empty
+4,A102,sweet,2,2000,FULL
 5,A202,sweet,2,2000,Empty
 6,B102,sweet,2,2000,Empty
 7,B101,normal,1,500,Empty
