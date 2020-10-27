@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
 			menucustomer:
 			system("cls");
 			cout << endl << "============== Customer =============" << endl
-						 << "1.Booking" << endl
+						 << "1.Searching Room and Booking" << endl
 						 << "2.Review" << endl
 						 << "3.Back" << endl
 				 		 << "=====================================" << endl
