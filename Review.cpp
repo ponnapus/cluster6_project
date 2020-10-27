@@ -216,6 +216,7 @@ void Review::reviewhotel(){
 			sleep(1);
 			system("cls");
 			icon("thx");
+			sleep(1);
 		}
 		else{
 			goto menureview;

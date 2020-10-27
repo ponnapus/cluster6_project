@@ -27,3 +27,6 @@
 5,Sup,Very
 5,Noice,NiceNiceNice
 10,Oice,NiceNiceNice
+9.5,praew,so
+10,ping,good
+2,zee,-
