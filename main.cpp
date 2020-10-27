@@ -72,8 +72,10 @@ int main(int argc, char** argv) {
 				cout << "1. Booking" << endl;
 				cout << "2. return home" << endl;
 				cout << "=================" << endl;
+				do{
 				cout << "Enter : ";
 				cin >> choice;
+				}while(choice != "1" &&choice != "2");
 					if(choice=="1"){
 						obj1.book();
 						obj2.ChangeStatus(obj1.num_room,"Booked");
@@ -81,7 +83,7 @@ int main(int argc, char** argv) {
 						obj2.write_file();
 						obj1.randomcode();
 						cout << "Booked thank you !" << endl;
-						cout << "Input anykey to continue :";
+						cout << "Input anykey to continue : ";
 						cin >> choice;
 						goto menucustomer;
 					}
